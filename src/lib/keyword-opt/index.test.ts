@@ -87,6 +87,13 @@ describe("packKeywords — budget", () => {
     expect(r.utilization).toBe(0);
   });
 
+  it("handles a zero budget without dividing by zero", () => {
+    const r = packKeywords(["habit", "streak"], [], 0);
+    expect(r.keywords).toBe("");
+    expect(r.utilization).toBe(0);
+    expect(r.excluded.every((e) => e.reason === "over-budget")).toBe(true);
+  });
+
   it("prefers higher-ranked terms when budget forces a choice", () => {
     // rank 1 term and rank 2 term have equal length; only one fits
     const r = packKeywords(["alpha", "bravo"], [], 5);

@@ -115,6 +115,10 @@ describe("ios-kw-spaces", () => {
     ).toContain("ios-kw-spaces"));
   it("passes tight commas", () =>
     expect(ruleIds(clean())).not.toContain("ios-kw-spaces"));
+  it("fires with singular wording for exactly one wasted space", () =>
+    expect(
+      ruleIds(clean({ keywords: "habit, streak,focus timer,morning ritual,self care,discipline,journal" })),
+    ).toContain("ios-kw-spaces"));
 });
 
 describe("ios-kw-dup-meta", () => {
@@ -252,6 +256,10 @@ describe("and-desc-kw-density", () => {
   });
   it("passes varied vocabulary", () =>
     expect(ruleIds(cleanAndroid())).not.toContain("and-desc-kw-density"));
+  it("skips the density check for short descriptions (<40 words)", () =>
+    expect(
+      ruleIds(cleanAndroid({ description: "Plan routines and build streaks with reminders.\n\nDownload free today." })),
+    ).not.toContain("and-desc-kw-density"));
 });
 
 // ---------- Cross-store ----------
@@ -303,6 +311,15 @@ describe("x-desc-repetition", () => {
       "Plan rituals each morning and check them off.\n\nDownload free and start your streak today.";
     expect(ruleIds(clean({ description: spam }))).toContain("x-desc-repetition");
   });
+  it("picks the worst when several stems repeat 6+ times", () =>
+    expect(
+      ruleIds(
+        clean({
+          description:
+            "Track workout after workout after workout. Every workout log shows your workout trend so the next workout beats the last workout. Plan the plan, follow the plan, adjust the plan, love the plan, live the plan, own the plan.\n\nDownload free today.",
+        }),
+      ),
+    ).toContain("x-desc-repetition"));
   it("passes varied text", () =>
     expect(ruleIds(clean())).not.toContain("x-desc-repetition"));
 });
@@ -358,6 +375,8 @@ describe("x-readability", () => {
   });
   it("passes scannable sentences", () =>
     expect(ruleIds(clean())).not.toContain("x-readability"));
+  it("skips readability when the description has no sentences", () =>
+    expect(ruleIds(clean({ description: "   " }))).not.toContain("x-readability"));
 });
 
 describe("x-screenshot-count", () => {
