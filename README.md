@@ -3,9 +3,10 @@
 </p>
 
 <p align="center">
-  <img alt="tests" src="https://img.shields.io/badge/tests-130%20passing-00d4ff?style=flat-square&labelColor=0d0221">
+  <img alt="tests" src="https://img.shields.io/badge/tests-145%20passing-00d4ff?style=flat-square&labelColor=0d0221">
   <img alt="engine" src="https://img.shields.io/badge/ASO%20engine-28%20rules-ff2d95?style=flat-square&labelColor=0d0221">
   <img alt="stack" src="https://img.shields.io/badge/Next.js-Claude-8b00ff?style=flat-square&labelColor=0d0221">
+  <img alt="semantic-release" src="https://img.shields.io/badge/release-semantic-e10079?style=flat-square&logo=semantic-release&labelColor=0d0221">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-00ffd1?style=flat-square&labelColor=0d0221">
 </p>
 
@@ -71,12 +72,16 @@ curl -X POST http://localhost:3000/api/analyze \
 
 ## 🧪 Testing & engineering harness
 
-A **6-stage CI/CD pipeline** runs on every push: Quality → Security → Build → E2E →
-Performance → Deploy gate.
+A **6-stage CI/CD pipeline** runs on every push (Quality → Security → Build → E2E →
+Performance → Deploy gate). When it goes green on `main`, a separate **Release** workflow
+runs [semantic-release](https://semantic-release.gitbook.io): it reads the conventional
+commits, computes the next version, updates the changelog, and publishes a tagged GitHub
+Release automatically.
 
 ```bash
 npm run ci          # lint + typecheck + tests with coverage (the quality gate)
 npm run e2e         # Playwright E2E (demo mode — no API key)
+npm run release:dry # preview the next semantic version locally
 ```
 
 | Layer | Tooling | Status |
@@ -88,6 +93,7 @@ npm run e2e         # Playwright E2E (demo mode — no API key)
 | Security (SCA) | Dependabot + `npm audit` | ✅ |
 | Secret scanning | TruffleHog (verified) | ✅ |
 | Performance | Lighthouse CI | ✅ |
+| Releases | semantic-release (conventional commits → semver, auto GitHub Release) | ✅ |
 | Community profile | CoC · Contributing · Security · issue/PR templates | ✅ 100% |
 
 ## Honest limitations
