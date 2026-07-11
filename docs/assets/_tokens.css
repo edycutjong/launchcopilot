@@ -1,0 +1,46 @@
+/* LaunchCopilot — design tokens (synthwave / cyber-tropical)
+   Theme source: HackOnVibe THEME.md. Portable :root contract — no selectors
+   other than :root here; consumers map these into Tailwind / asset utilities. */
+:root {
+  /* Core neon palette */
+  --primary: #00d4ff;        /* electric cyan — primary accent, "A" grade, launch */
+  --primary-ink: #001a20;    /* text on cyan fills */
+  --accent: #ff2d95;         /* hot magenta — secondary accent, "F" grade */
+  --violet: #8b00ff;         /* deep violet — ambient glow, logo gradient */
+  --teal: #00ffd1;           /* circuit teal — traces, micro-accents */
+  --sunset: #ff6b35;         /* sunset orange — horizon sun */
+
+  /* Surfaces */
+  --bg: #0d0221;             /* deep navy-purple base */
+  --bg-2: #150634;           /* raised panel */
+  --bg-3: #1e0a47;           /* card / plate */
+  --hairline: rgba(0, 212, 255, 0.18);
+
+  /* Text */
+  --text: #ffffff;
+  --text-dim: #b9a9e6;       /* muted lavender-white */
+  --text-faint: #6b5a99;
+
+  /* Signature gradients */
+  --grad-brand: linear-gradient(90deg, #00d4ff 0%, #8b00ff 50%, #ff2d95 100%);
+  --grad-score: linear-gradient(90deg, #ff2d95 0%, #ff6b35 45%, #00d4ff 100%);
+  --grad-sky: linear-gradient(180deg, #1a0033 0%, #8b00ff 40%, #ff2d95 72%, #ff6b35 100%);
+
+  /* Glows */
+  --glow-cyan: 0 0 7px #00d4ff, 0 0 18px #00d4ff, 0 0 42px rgba(0, 212, 255, 0.55);
+  --glow-magenta: 0 0 7px #ff2d95, 0 0 18px #ff2d95, 0 0 42px rgba(255, 45, 149, 0.5);
+  --glow-soft: 0 0 30px rgba(139, 0, 255, 0.45);
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Geometry */
+  --radius-tile: 26%;        /* app-icon squircle-ish corner */
+  --radius-card: 18px;
+  --radius-pill: 999px;
+
+  /* Reusable noise/grid as tokens (asset pipeline references these) */
+  --noise-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  --grid-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M40 0H0V40' fill='none' stroke='%2300d4ff' stroke-opacity='0.10' stroke-width='1'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#00d4ff;--accent:#ff2d95;--violet:#8b00ff;--teal:#00ffd1;--sunset:#ff6b35}
+  *{margin:0;box-sizing:border-box}
+  html,body{width:1200px;height:800px}
+  .stage{position:relative;width:1200px;height:800px;overflow:hidden;padding:64px;
+    background:
+    radial-gradient(120% 60% at 50% 118%, rgba(255,107,53,.42), rgba(255,45,149,.24) 36%, transparent 62%),
+    radial-gradient(50% 60% at 12% 8%, rgba(139,0,255,.5), transparent 60%),
+    radial-gradient(60% 60% at 92% 20%, rgba(0,212,255,.3), transparent 60%),
+    linear-gradient(160deg,#160730,#0d0221 55%,#07010f);
+    font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;color:#fff}
+  .grid{position:absolute;inset:0;background:
+    linear-gradient(#00d4ff1c 1px,transparent 1px) 0 0/100% 48px,
+    linear-gradient(90deg,#00d4ff12 1px,transparent 1px) 0 0/48px 100%;
+    -webkit-mask:linear-gradient(180deg,transparent 62%,#000 100%);mask:linear-gradient(180deg,transparent 62%,#000 100%);opacity:.5}
+  .head{display:flex;align-items:center;gap:22px;position:relative}
+  .head img{width:92px;height:92px;filter:drop-shadow(0 0 20px #8b00ff88)}
+  .head .w{font-weight:700;font-size:62px;letter-spacing:-1.5px}
+  .head .w .a{color:#eaf6ff}.head .w .b{background:linear-gradient(90deg,#00d4ff,#ff2d95);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tag{position:relative;margin:26px 0 30px;font-size:30px;font-weight:500;color:#e9e2ff;max-width:940px;line-height:1.3}
+  .tag b{color:#00ffd1}
+  .grid5{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{border-radius:18px;padding:24px 22px;background:#130f31cc;border:1.6px solid;min-height:150px;display:flex;flex-direction:column;gap:10px}
+  .card .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+  .card .t{font-weight:700;font-size:24px}
+  .card .d{font-size:16.5px;color:#c3b8e6;line-height:1.35}
+  .c1{border-color:var(--primary)}.c1 .ic{background:#00d4ff22;box-shadow:0 0 20px #00d4ff55}
+  .c2{border-color:var(--accent)}.c2 .ic{background:#ff2d9522;box-shadow:0 0 20px #ff2d9555}
+  .c3{border-color:var(--violet)}.c3 .ic{background:#8b00ff26;box-shadow:0 0 20px #8b00ff66}
+  .c4{border-color:var(--teal)}.c4 .ic{background:#00ffd122;box-shadow:0 0 20px #00ffd155}
+  .c5{border-color:var(--sunset)}.c5 .ic{background:#ff6b3522;box-shadow:0 0 20px #ff6b3555}
+  .c6{border-color:#ffffff33;background:linear-gradient(135deg,#1a0940,#12082e)}
+  .c6 .big{font:800 58px 'Space Grotesk';line-height:1}
+  .c6 .big .f{color:var(--accent);text-shadow:0 0 18px #ff2d95}.c6 .big .a{color:var(--primary);text-shadow:0 0 18px #00d4ff}
+  .c6 .lab{font:600 15px ui-monospace,Menlo,monospace;color:#8b7bd6;letter-spacing:1px}
+  .foot{position:absolute;left:64px;bottom:30px;font:500 17px ui-monospace,Menlo,monospace;color:#6b5a99}
+</style></head>
+<body>
+<div class="stage">
+  <div class="grid"></div>
+  <div class="head"><img src="icon.svg" alt=""><div class="w"><span class="a">Launch</span><span class="b">Copilot</span></div></div>
+  <div class="tag">Paste your newly launched app's store listing. Get a <b>graded ASO report</b> and a complete, validated launch kit — in about a minute.</div>
+  <div class="grid5">
+    <div class="card c6"><div class="lab">ASO SCORE</div><div class="big"><span class="f">27</span> → <span class="a">93</span></div><div class="d">28-rule engine grades &amp; the AI's rewrite must pass it.</div></div>
+    <div class="card c1"><div class="ic">📝</div><div class="t">ASO rewrite</div><div class="d">Title, subtitle &amp; keyword field, machine-packed &amp; re-validated.</div></div>
+    <div class="card c2"><div class="ic">🚀</div><div class="t">Product Hunt</div><div class="d">Tagline, first comment &amp; launch-day checklist.</div></div>
+    <div class="card c3"><div class="ic">📅</div><div class="t">7-day social</div><div class="d">A full launch-week content calendar, day by day.</div></div>
+    <div class="card c4"><div class="ic">💬</div><div class="t">Communities</div><div class="d">Matched subreddits &amp; forums — respecting each self-promo rule.</div></div>
+    <div class="card c5"><div class="ic">📰</div><div class="t">Press blurbs</div><div class="d">50/100-word blurbs &amp; a cold email to bloggers.</div></div>
+  </div>
+  <div class="foot">Next.js · Claude Opus + Haiku · 130 tests · persona-panel QA · MIT</div>
+</div>
+</body></html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>LaunchCopilot — asset sanity check</title>
+<style>
+  body{margin:0;background:#07010f;color:#eaf6ff;font:15px 'Segoe UI',system-ui,sans-serif;padding:40px}
+  h1{font-weight:700;letter-spacing:-.5px}
+  h2{color:#00d4ff;margin-top:44px;font-size:15px;text-transform:uppercase;letter-spacing:2px}
+  .row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end;margin-top:14px}
+  .cell{background:#0d0221;border:1px solid #ffffff14;border-radius:12px;padding:14px}
+  .cell span{display:block;color:#6b5a99;font:12px ui-monospace,monospace;margin-top:8px}
+  img{display:block;background:#0d0221;border-radius:8px}
+  .checker{background:
+    conic-gradient(#1a1030 0 25%,#120a24 0 50%) 0 0/24px 24px}
+</style></head>
+<body>
+  <h1>LaunchCopilot — asset suite</h1>
+
+  <h2>Animated README hero (8s loop)</h2>
+  <div class="row"><div class="cell"><img src="readme-hero-animated.svg" width="960" height="240"><span>readme-hero-animated.svg</span></div></div>
+
+  <h2>Animated icon (6s loop)</h2>
+  <div class="row">
+    <div class="cell checker"><img src="icon-animated.svg" width="256" height="256"><span>256</span></div>
+    <div class="cell checker"><img src="icon-animated.svg" width="64" height="64"><span>64</span></div>
+  </div>
+
+  <h2>Static icon</h2>
+  <div class="row">
+    <div class="cell checker"><img src="icon.svg" width="512" height="512"><span>512</span></div>
+    <div class="cell checker"><img src="icon.svg" width="128" height="128"><span>128</span></div>
+    <div class="cell checker"><img src="icon.svg" width="32" height="32"><span>32 (favicon)</span></div>
+  </div>
+
+  <h2>Exported PNGs</h2>
+  <div class="row">
+    <div class="cell"><img src="og-image.png" width="480"><span>og-image.png · 1200×630</span></div>
+    <div class="cell"><img src="youtube-thumbnail.png" width="480"><span>youtube-thumbnail.png · 1280×720</span></div>
+  </div>
+  <div class="row">
+    <div class="cell"><img src="devpost-gallery.png" width="480"><span>devpost-gallery.png · 1200×800</span></div>
+    <div class="cell"><img src="readme-hero.png" width="480"><span>readme-hero.png (static fallback)</span></div>
+  </div>
+</body></html>
