@@ -58,7 +58,7 @@ key.
 
 ```bash
 npm install
-npm test                                              # 130 tests
+npm test                                              # 130 unit tests
 npm run aso-lint -- data/fixtures/pocketplants.json   # CLI: 27/100 (F) + fixes
 npm run dev                                           # app at http://localhost:3000
 ```
@@ -68,6 +68,27 @@ npm run dev                                           # app at http://localhost:
 curl -X POST http://localhost:3000/api/analyze \
   -H 'content-type: application/json' -d @data/fixtures/pocketplants.json
 ```
+
+## 🧪 Testing & engineering harness
+
+A **6-stage CI/CD pipeline** runs on every push: Quality → Security → Build → E2E →
+Performance → Deploy gate.
+
+```bash
+npm run ci          # lint + typecheck + tests with coverage (the quality gate)
+npm run e2e         # Playwright E2E (demo mode — no API key)
+```
+
+| Layer | Tooling | Status |
+|---|---|---|
+| Code quality | ESLint + TypeScript strict | ✅ |
+| Unit tests | Vitest — **130 tests, 98% line coverage** | ✅ |
+| E2E tests | Playwright — 3 suites (smoke · API · responsive), desktop + mobile | ✅ |
+| Security (SAST) | CodeQL | ✅ |
+| Security (SCA) | Dependabot + `npm audit` | ✅ |
+| Secret scanning | TruffleHog (verified) | ✅ |
+| Performance | Lighthouse CI | ✅ |
+| Community profile | CoC · Contributing · Security · issue/PR templates | ✅ 100% |
 
 ## Honest limitations
 No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best

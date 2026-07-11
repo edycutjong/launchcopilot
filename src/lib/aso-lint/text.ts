@@ -3,7 +3,8 @@ const graphemeSegmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 /** Store character limits count what the user sees — graphemes, not UTF-16 units. */
 export function graphemeLength(s: string): number {
   let n = 0;
-  for (const _ of graphemeSegmenter.segment(s)) n++;
+  const it = graphemeSegmenter.segment(s)[Symbol.iterator]();
+  while (!it.next().done) n++;
   return n;
 }
 
