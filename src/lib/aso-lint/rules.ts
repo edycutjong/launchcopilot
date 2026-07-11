@@ -308,14 +308,14 @@ const androidRules: Rule[] = [
     check: ({ descTokens, brandTokens }) => {
       const substantive = nonStopword(descTokens).filter((t) => !brandTokens.has(t));
       if (substantive.length < 40) return null;
-      const counts = countTokens(substantive.map(stem));
-      let top: [string, number] | null = null;
-      for (const [t, n] of counts) if (!top || n > top[1]) top = [t, n];
-      if (!top) return null;
-      const density = top[1] / substantive.length;
-      return density > LIMITS.DENSITY_MAX && top[1] >= 5
+      // substantive.length >= 40 guarantees at least one token, so reduce is safe.
+      const [word, n] = [...countTokens(substantive.map(stem)).entries()].reduce((a, b) =>
+        b[1] > a[1] ? b : a,
+      );
+      const density = n / substantive.length;
+      return density > LIMITS.DENSITY_MAX && n >= 5
         ? {
-            message: `"${top[0]}" is ${Math.round(density * 100)}% of your description — Google penalizes keyword stuffing above ~5%.`,
+            message: `"${word}" is ${Math.round(density * 100)}% of your description — Google penalizes keyword stuffing above ~5%.`,
             fix: "Vary the vocabulary; target 1.5-3% for the primary keyword.",
           }
         : null;
