@@ -88,7 +88,7 @@ npm run release:dry # preview the next semantic version locally
 | Layer | Tooling | Status |
 |---|---|---|
 | Code quality | ESLint + TypeScript strict | ✅ |
-| Unit tests | Vitest — **130 tests, 98% line coverage** | ✅ |
+| Unit tests | Vitest — **150 tests, 100% coverage** of the deterministic core | ✅ |
 | E2E tests | Playwright — 3 suites (smoke · API · responsive), desktop + mobile | ✅ |
 | Security (SAST) | CodeQL | ✅ |
 | Security (SCA) | Dependabot + `npm audit` | ✅ |
@@ -96,6 +96,25 @@ npm run release:dry # preview the next semantic version locally
 | Performance | Lighthouse CI | ✅ |
 | Releases | semantic-release (conventional commits → semver, auto GitHub Release) | ✅ |
 | Community profile | CoC · Contributing · Security · issue/PR templates | ✅ 100% |
+
+**Benchmark** (`npm run bench`, 5,000 runs over 3 fixtures): the lint engine runs at
+**p50 0.39 ms · p95 0.86 ms · ~2,180 listings/sec** — fast enough to be the AI's inline
+validator on every repair attempt.
+
+## Build notes — a few bugs worth remembering
+
+- **The SVG logo was pinned to (0,0).** In the animated README hero, a CSS `transform` (the
+  bob animation) silently *overrode* the element's `transform="translate()"` attribute — so
+  the icon ignored every position I set. Fix: split positioning (outer group, attribute) from
+  animation (inner group, CSS).
+- **A stopword leak flipped a rule.** The "what does your app do" text was matched against the
+  description without filtering stopwords, so "the/for/your" counted as real content — caught
+  only because a test expected a finding that didn't fire.
+- **The social-proof regex missed real phrasing.** "Rated 4.8 by 3,200 users" didn't match the
+  first pattern; a fixture pinned the expected score and surfaced it.
+- **TypeScript 7 (the native compiler) breaks the toolchain.** `tsc` itself passes, but
+  `typescript-eslint` and Next's build fail on its changed API — so the Dependabot bump is
+  held via an ignore rule, not merged.
 
 ## Honest limitations
 No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best
