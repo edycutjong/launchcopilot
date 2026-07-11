@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://launchcopilot.vercel.app",
+    url: "https://launchcopilot-two.vercel.app",
     siteName: "LaunchCopilot",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "LaunchCopilot" }],
     locale: "en_US",
