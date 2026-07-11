@@ -1,0 +1,11 @@
+{
+  "appName": "FitDash",
+  "platform": "android",
+  "category": "Health & Fitness",
+  "title": "FitDash",
+  "shortDescription": "Your fitness, reimagined.",
+  "description": "FitDash is an app that transforms your workouts into data you can use, because we believe a workout without numbers is a workout wasted, and the FitDash workout engine was designed from day one to make each workout count by logging the workout in seconds, comparing it with your last workout, and planning the next workout automatically so your training never plateaus and your motivation never dips no matter how busy life gets or how long you have been away from the gym, since the entire experience adapts to you rather than forcing you to adapt to it, which is exactly what modern training software should do. Log your workouts with barbell tracking, dumbbell tracking, machine tracking, cardio sessions, stretching blocks, supersets, dropsets, circuits, intervals, tempo work, mobility drills, warmups and cooldowns while smart rest timers, plate calculators, personal records, streak counters, body measurements, progress photos and detailed charts keep everything measurable.",
+  "screenshotCount": 3,
+  "hasVideo": false,
+  "whatItDoes": "Log workouts with sets, reps and rest timers, and see progress charts."
+}
