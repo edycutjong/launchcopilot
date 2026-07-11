@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="LaunchCopilot icon — a launch arrow rising through an ASO score gauge">
+  <defs>
+    <linearGradient id="lc-tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#170733"/>
+      <stop offset="1" stop-color="#0a0119"/>
+    </linearGradient>
+    <radialGradient id="lc-halo" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#8b00ff" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#8b00ff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#8b00ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lc-gauge" gradientUnits="userSpaceOnUse" x1="150" y1="378" x2="362" y2="378">
+      <stop offset="0" stop-color="var(--accent, #ff2d95)"/>
+      <stop offset="0.5" stop-color="var(--sunset, #ff6b35)"/>
+      <stop offset="1" stop-color="var(--primary, #00d4ff)"/>
+    </linearGradient>
+    <linearGradient id="lc-arrow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="var(--primary, #00d4ff)"/>
+      <stop offset="1" stop-color="var(--teal, #00ffd1)"/>
+    </linearGradient>
+    <filter id="lc-bloom" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- base tile -->
+  <rect x="16" y="16" width="480" height="480" rx="118" fill="url(#lc-tile)"/>
+  <rect x="16" y="16" width="480" height="480" rx="118" fill="url(#lc-halo)"/>
+  <rect x="16.5" y="16.5" width="479" height="479" rx="117.5" fill="none" stroke="#00d4ff" stroke-opacity="0.22" stroke-width="1.5"/>
+
+  <!-- circuit traces (corners) -->
+  <g stroke="var(--teal, #00ffd1)" stroke-opacity="0.5" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M60 96 h44 l18 18 v34"/><circle cx="60" cy="96" r="5" fill="var(--teal,#00ffd1)" stroke="none"/>
+    <path d="M452 118 h-40 l-16 16"/><circle cx="452" cy="118" r="5" fill="var(--teal,#00ffd1)" stroke="none"/>
+    <path d="M76 430 v-34 l20-20"/><circle cx="76" cy="430" r="5" fill="var(--teal,#00ffd1)" stroke="none"/>
+    <path d="M440 424 h-38 l-18-18 v-26"/><circle cx="440" cy="424" r="5" fill="var(--teal,#00ffd1)" stroke="none"/>
+  </g>
+
+  <!-- gauge arc: score sweeping F(magenta) -> A(cyan) -->
+  <g filter="url(#lc-bloom)">
+    <path d="M149.9 378.1 A150 150 0 1 1 362.1 378.1" fill="none" stroke="#0d0221" stroke-opacity="0.9" stroke-width="46" stroke-linecap="round"/>
+    <path d="M149.9 378.1 A150 150 0 1 1 362.1 378.1" fill="none" stroke="url(#lc-gauge)" stroke-width="30" stroke-linecap="round"/>
+  </g>
+  <!-- gauge endpoint nodes -->
+  <circle cx="149.9" cy="378.1" r="13" fill="var(--accent, #ff2d95)" filter="url(#lc-bloom)"/>
+  <circle cx="362.1" cy="378.1" r="15" fill="var(--primary, #00d4ff)" filter="url(#lc-bloom)"/>
+  <circle cx="362.1" cy="378.1" r="6" fill="#ffffff"/>
+
+  <!-- launch arrow -->
+  <g filter="url(#lc-bloom)">
+    <path d="M256 150 L320 222 L288 222 L288 322 Q288 336 274 336 L238 336 Q224 336 224 322 L224 222 L192 222 Z"
+          fill="url(#lc-arrow)"/>
+  </g>
+  <!-- exhaust ticks -->
+  <g stroke-linecap="round" filter="url(#lc-bloom)">
+    <line x1="256" y1="352" x2="256" y2="374" stroke="var(--sunset, #ff6b35)" stroke-width="9"/>
+    <line x1="232" y1="350" x2="228" y2="366" stroke="var(--accent, #ff2d95)" stroke-width="7"/>
+    <line x1="280" y1="350" x2="284" y2="366" stroke="var(--accent, #ff2d95)" stroke-width="7"/>
+  </g>
+</svg>

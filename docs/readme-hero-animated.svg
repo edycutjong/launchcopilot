@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="LaunchCopilot — paste your store listing and get a graded, validated launch kit. The demo shows an ASO score rising from 27 to 93 and a five-channel launch kit fanning out.">
+  <defs>
+    <linearGradient id="h-plate" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#160730"/><stop offset="0.6" stop-color="#0d0221"/><stop offset="1" stop-color="#07010f"/>
+    </linearGradient>
+    <radialGradient id="h-sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd66b"/><stop offset="0.35" stop-color="#ff6b35"/>
+      <stop offset="0.7" stop-color="#ff2d95" stop-opacity="0.6"/><stop offset="1" stop-color="#ff2d95" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h-blob1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8b00ff" stop-opacity="0.55"/><stop offset="1" stop-color="#8b00ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h-blob2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00d4ff" stop-opacity="0.4"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="h-word" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00d4ff"/><stop offset="0.5" stop-color="#8b00ff"/><stop offset="1" stop-color="#ff2d95"/>
+    </linearGradient>
+    <linearGradient id="h-score" gradientUnits="userSpaceOnUse" x1="648" y1="0" x2="858" y2="0">
+      <stop offset="0" stop-color="#ff2d95"/><stop offset="0.5" stop-color="#ff6b35"/><stop offset="1" stop-color="#00d4ff"/>
+    </linearGradient>
+    <linearGradient id="h-beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00d4ff" stop-opacity="0"/><stop offset="0.5" stop-color="#00d4ff" stop-opacity="0.9"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="h-tileicon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#ff2d95"/>
+    </linearGradient>
+    <filter id="h-bloom" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="h-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
+    <clipPath id="h-plate-clip"><rect x="8" y="8" width="1264" height="304" rx="26"/></clipPath>
+    <clipPath id="h-shine"><path transform="translate(234.6,0)" d="M21.2 0.9Q12.9 0.9 8.1-3.7Q3.2-8.4 3.2-17L3.2-27.8Q3.2-36.4 8.1-41.1Q12.9-45.7 21.2-45.7Q29.5-45.7 34-41.2Q38.5-36.7 38.5-28.8L38.5-28.4L30.2-28.4L30.2-29.1Q30.2-33 28-35.6Q25.8-38.1 21.2-38.1Q16.8-38.1 14.2-35.4Q11.6-32.6 11.6-27.9L11.6-16.9Q11.6-12.2 14.2-9.4Q16.8-6.7 21.2-6.7Q25.8-6.7 28-9.2Q30.2-11.8 30.2-15.7L30.2-16.9L38.5-16.9L38.5-16Q38.5-8.1 34-3.6Q29.5 0.9 21.2 0.9M60.8 0.9Q56.1 0.9 52.3-1Q48.5-2.9 46.3-6.6Q44.2-10.2 44.2-15.4L44.2-16.4Q44.2-21.5 46.3-25.2Q48.5-28.8 52.3-30.7Q56.1-32.6 60.8-32.6Q65.5-32.6 69.3-30.7Q73.1-28.8 75.3-25.2Q77.4-21.5 77.4-16.4L77.4-15.4Q77.4-10.2 75.3-6.6Q73.1-2.9 69.3-1Q65.5 0.9 60.8 0.9M60.8-6.3Q64.5-6.3 66.9-8.7Q69.4-11.1 69.4-15.6L69.4-16.2Q69.4-20.7 67-23.1Q64.6-25.5 60.8-25.5Q57.1-25.5 54.7-23.1Q52.2-20.7 52.2-16.2L52.2-15.6Q52.2-11.1 54.7-8.7Q57.1-6.3 60.8-6.3M92.9 12.8L84.9 12.8L84.9-31.7L92.8-31.7L92.8-27.9L94-27.9Q95-29.8 97.3-31.2Q99.6-32.6 103.9-32.6Q107.8-32.6 111-30.8Q114.3-28.9 116.3-25.2Q118.3-21.6 118.3-16.4L118.3-15.4Q118.3-10.2 116.3-6.5Q114.3-2.9 111-1Q107.8 0.9 103.9 0.9Q101.1 0.9 99.1 0.2Q97.2-0.4 96-1.5Q94.8-2.6 94.1-3.6L92.9-3.6L92.9 12.8M101.5-6.1Q105.3-6.1 107.7-8.5Q110.2-10.9 110.2-15.6L110.2-16.2Q110.2-20.8 107.7-23.2Q105.2-25.6 101.5-25.6Q97.8-25.6 95.3-23.2Q92.8-20.8 92.8-16.2L92.8-15.6Q92.8-10.9 95.3-8.5Q97.8-6.1 101.5-6.1M133.8 0L125.7 0L125.7-31.7L133.8-31.7L133.8 0M129.7-35.5Q127.6-35.5 126-36.9Q124.5-38.3 124.5-40.6Q124.5-42.9 126-44.3Q127.6-45.7 129.7-45.7Q132-45.7 133.4-44.3Q134.9-42.9 134.9-40.6Q134.9-38.3 133.4-36.9Q132-35.5 129.7-35.5M150.8 0L142.7 0L142.7-44.8L150.8-44.8L150.8 0M174.8 0.9Q170.1 0.9 166.3-1Q162.6-2.9 160.4-6.6Q158.2-10.2 158.2-15.4L158.2-16.4Q158.2-21.5 160.4-25.2Q162.6-28.8 166.3-30.7Q170.1-32.6 174.8-32.6Q179.6-32.6 183.4-30.7Q187.1-28.8 189.3-25.2Q191.5-21.5 191.5-16.4L191.5-15.4Q191.5-10.2 189.3-6.6Q187.1-2.9 183.4-1Q179.6 0.9 174.8 0.9M174.8-6.3Q178.6-6.3 181-8.7Q183.4-11.1 183.4-15.6L183.4-16.2Q183.4-20.7 181-23.1Q178.6-25.5 174.8-25.5Q171.1-25.5 168.7-23.1Q166.3-20.7 166.3-16.2L166.3-15.6Q166.3-11.1 168.7-8.7Q171.1-6.3 174.8-6.3M219 0L210 0Q206.9 0 205-2Q203-3.9 203-7.2L203-25.1L195.1-25.1L195.1-31.7L203-31.7L203-41.6L211.1-41.6L211.1-31.7L219.8-31.7L219.8-25.1L211.1-25.1L211.1-8.6Q211.1-6.7 212.9-6.7L219-6.7"/></clipPath>
+    <style>
+      @keyframes h-story { 0%{opacity:0} 2%{opacity:1} 95%{opacity:1} 100%{opacity:0} }
+      @keyframes h-card  { 0%,3%{opacity:0;transform:translateY(14px) scale(.94)} 10%{opacity:1;transform:translateY(0) scale(1.02)} 14%{transform:scale(1)} 95%{opacity:1} 100%{opacity:0} }
+      @keyframes h-badgeF{ 0%,4%{opacity:0} 12%{opacity:1} 30%{opacity:1} 37%{opacity:0} 100%{opacity:0} }
+      @keyframes h-badgeA{ 0%,32%{opacity:0;transform:scale(.5)} 39%{opacity:1;transform:scale(1.18)} 44%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-num27 { 0%,4%{opacity:0} 12%{opacity:1} 30%{opacity:1} 37%{opacity:0} 100%{opacity:0} }
+      @keyframes h-num93 { 0%,32%{opacity:0} 40%{opacity:1} 95%{opacity:1} 100%{opacity:0} }
+      @keyframes h-metric{ 0%,100%{opacity:.85} 50%{opacity:1} }
+      @keyframes h-t1{ 0%,40%{opacity:0;transform:scale(.6)} 44%{opacity:1;transform:scale(1.1)} 48%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t2{ 0%,45%{opacity:0;transform:scale(.6)} 49%{opacity:1;transform:scale(1.1)} 53%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t3{ 0%,50%{opacity:0;transform:scale(.6)} 54%{opacity:1;transform:scale(1.1)} 58%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t4{ 0%,55%{opacity:0;transform:scale(.6)} 59%{opacity:1;transform:scale(1.1)} 63%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t5{ 0%,60%{opacity:0;transform:scale(.6)} 64%{opacity:1;transform:scale(1.1)} 68%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-blobA{ 0%{transform:translate(0,0)} 50%{transform:translate(38px,-20px)} 100%{transform:translate(0,0)} }
+      @keyframes h-blobB{ 0%{transform:translate(0,0)} 50%{transform:translate(-30px,18px)} 100%{transform:translate(0,0)} }
+      @keyframes h-mark { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+      .h-story{animation:h-story 8s linear infinite}
+      .h-card{animation:h-card 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-badgeF{animation:h-badgeF 8s linear infinite}
+      .h-badgeA{animation:h-badgeA 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-num27{animation:h-num27 8s linear infinite}
+      .h-num93{animation:h-num93 8s linear infinite}
+      .h-metric{animation:h-metric 8s ease-in-out infinite}
+      .h-t1{animation:h-t1 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-t2{animation:h-t2 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-t3{animation:h-t3 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-t4{animation:h-t4 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-t5{animation:h-t5 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-blobA{animation:h-blobA 17s ease-in-out infinite}
+      .h-blobB{animation:h-blobB 19s ease-in-out infinite}
+      .h-mark{animation:h-mark 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      @media (prefers-reduced-motion: reduce){ *{animation:none!important} .h-story,.h-card,.h-badgeA,.h-num93,.h-t1,.h-t2,.h-t3,.h-t4,.h-t5{opacity:1} .h-badgeF,.h-num27{opacity:0} }
+    </style>
+  </defs>
+
+  <!-- plate + backdrop -->
+  <rect x="8" y="8" width="1264" height="304" rx="26" fill="url(#h-plate)"/>
+  <g clip-path="url(#h-plate-clip)">
+    <ellipse cx="720" cy="330" rx="360" ry="180" fill="url(#h-sun)" opacity="0.55"/>
+    <g class="h-blobA"><circle cx="250" cy="120" r="150" fill="url(#h-blob1)"/></g>
+    <g class="h-blobB"><circle cx="1050" cy="220" r="170" fill="url(#h-blob2)"/></g>
+    <!-- retro grid floor -->
+    <g stroke="#00d4ff" stroke-opacity="0.14" stroke-width="1">
+      <path d="M-100 300 L1380 300 M-160 285 L1440 285 M-260 268 L1540 268"/>
+      <path d="M640 262 L200 320 M640 262 L1080 320 M640 262 L440 320 M640 262 L840 320 M640 262 L640 320 M640 262 L20 320 M640 262 L1260 320"/>
+    </g>
+    <!-- faint circuit line across top -->
+    <path d="M40 44 H360 l16 16 H620" fill="none" stroke="#00ffd1" stroke-opacity="0.18" stroke-width="1.4"/>
+    <!-- palm silhouettes (cyber-tropical nod) -->
+    <g fill="none" stroke="#00d4ff" stroke-opacity="0.16" stroke-width="2.4" stroke-linecap="round">
+      <path d="M60 300 q6 -60 2 -96 M62 108 q-30 -14 -52 -6 M62 108 q28 -18 54 -12 M62 108 q-16 -30 -40 -34 M62 108 q18 -30 46 -30"/>
+      <path d="M1226 300 q-6 -54 -2 -88 M1224 124 q26 -12 46 -6 M1224 124 q-26 -16 -48 -10 M1224 124 q16 -28 40 -30"/>
+    </g>
+    <!-- one skewed beam sweep across the whole plate -->
+    <rect x="-260" y="8" width="150" height="304" fill="url(#h-beam)" opacity="0.5" transform="skewX(-18)">
+      <animate attributeName="x" dur="8s" repeatCount="indefinite" values="-380;-380;1360;1360" keyTimes="0;0.12;0.34;1"/>
+    </rect>
+
+    <!-- ===================== LEFT: BRAND ===================== -->
+    <!-- mini animated mark (miniature of the app icon: gauge + launch arrow) -->
+    <g class="h-mark" transform="translate(48,86)" filter="url(#h-bloom)">
+      <path d="M10.4 43.6 A22 22 0 1 1 41.6 43.6" fill="none" stroke="url(#h-score)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="41.6" cy="43.6" r="4" fill="#00d4ff"/>
+      <path d="M26 12 L38 26 L33 26 L33 40 L19 40 L19 26 L14 26 Z" fill="#eaf6ff"/>
+    </g>
+    <text x="116" y="72" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="2.4" fill="#00d4ff" opacity="0.9">APP-STORE OPTIMIZER × AI LAUNCH KIT</text>
+
+    <!-- outlined wordmark: Launch (near-white) + Copilot (gradient) + shimmer -->
+    <g transform="translate(116,150) scale(0.8)" filter="url(#h-bloom)">
+      <path fill="#eaf6ff" d="M33.2 0L4.2 0L4.2-44.8L12.7-44.8L12.7-7.7L33.2-7.7L33.2 0M49 0.9Q45.6 0.9 42.9-0.3Q40.3-1.5 38.7-3.7Q37.1-6 37.1-9.3Q37.1-12.5 38.7-14.8Q40.3-17 43-18.1Q45.8-19.2 49.4-19.2L58.1-19.2L58.1-21Q58.1-23.2 56.7-24.7Q55.3-26.1 52.2-26.1Q49.2-26.1 47.7-24.7Q46.3-23.4 45.8-21.2L38.4-23.7Q39.2-26.1 40.9-28.1Q42.6-30.1 45.4-31.4Q48.3-32.6 52.4-32.6Q58.6-32.6 62.3-29.5Q65.9-26.4 65.9-20.4L65.9-8.6Q65.9-6.7 67.7-6.7L70.3-6.7L70.3 0L64.9 0Q62.5 0 61-1.2Q59.5-2.3 59.5-4.2L59.5-4.3L58.2-4.3Q58-3.5 57.1-2.3Q56.2-1 54.3-0.1Q52.4 0.9 49 0.9M50.4-5.6Q53.8-5.6 56-7.5Q58.1-9.4 58.1-12.5L58.1-13.2L50-13.2Q47.7-13.2 46.5-12.2Q45.2-11.3 45.2-9.5Q45.2-7.8 46.5-6.7Q47.9-5.6 50.4-5.6M87.4 0.5Q83.6 0.5 80.9-1.2Q78.1-2.9 76.5-5.9Q75-8.9 75-12.8L75-31.7L83.1-31.7L83.1-13.4Q83.1-9.9 84.8-8.1Q86.6-6.3 89.9-6.3Q93.6-6.3 95.6-8.7Q97.7-11.2 97.7-15.6L97.7-31.7L105.7-31.7L105.7 0L97.8 0L97.8-4.2L96.6-4.2Q95.9-2.6 93.8-1Q91.6 0.5 87.4 0.5M122.8 0L114.7 0L114.7-31.7L122.6-31.7L122.6-27.6L123.8-27.6Q124.5-29.2 126.7-30.8Q128.8-32.3 133.1-32.3Q136.8-32.3 139.6-30.6Q142.3-28.9 143.9-25.9Q145.4-22.9 145.4-18.9L145.4 0L137.3 0L137.3-18.3Q137.3-21.9 135.6-23.7Q133.8-25.5 130.6-25.5Q126.8-25.5 124.8-23Q122.8-20.5 122.8-16.1L122.8 0M169 0.9Q164.4 0.9 160.7-1Q156.9-2.9 154.8-6.6Q152.6-10.2 152.6-15.4L152.6-16.3Q152.6-21.5 154.8-25.2Q156.9-28.8 160.7-30.7Q164.4-32.6 169-32.6Q173.6-32.6 176.8-31Q180.1-29.4 182.1-26.7Q184.1-23.9 184.8-20.4L177-18.7Q176.7-20.6 175.8-22.1Q174.9-23.7 173.3-24.6Q171.6-25.5 169.2-25.5Q166.8-25.5 164.8-24.4Q162.9-23.4 161.8-21.3Q160.6-19.2 160.6-16.2L160.6-15.6Q160.6-12.5 161.8-10.5Q162.9-8.4 164.8-7.3Q166.8-6.3 169.2-6.3Q172.9-6.3 174.8-8.2Q176.6-10 177.2-13.1L185-11.3Q184.1-7.9 182.1-5.1Q180.1-2.3 176.8-0.7Q173.6 0.9 169 0.9M199.7 0L191.6 0L191.6-44.8L199.7-44.8L199.7-27.8L200.8-27.8Q201.3-28.9 202.4-29.9Q203.5-30.9 205.3-31.6Q207.2-32.3 210-32.3Q213.7-32.3 216.5-30.6Q219.3-28.9 220.8-25.9Q222.3-22.9 222.3-18.9L222.3 0L214.3 0L214.3-18.3Q214.3-21.9 212.5-23.7Q210.8-25.5 207.5-25.5Q203.8-25.5 201.7-23Q199.7-20.5 199.7-16.1"/>
+      <g transform="translate(234.6,0)">
+        <path fill="url(#h-word)" d="M21.2 0.9Q12.9 0.9 8.1-3.7Q3.2-8.4 3.2-17L3.2-27.8Q3.2-36.4 8.1-41.1Q12.9-45.7 21.2-45.7Q29.5-45.7 34-41.2Q38.5-36.7 38.5-28.8L38.5-28.4L30.2-28.4L30.2-29.1Q30.2-33 28-35.6Q25.8-38.1 21.2-38.1Q16.8-38.1 14.2-35.4Q11.6-32.6 11.6-27.9L11.6-16.9Q11.6-12.2 14.2-9.4Q16.8-6.7 21.2-6.7Q25.8-6.7 28-9.2Q30.2-11.8 30.2-15.7L30.2-16.9L38.5-16.9L38.5-16Q38.5-8.1 34-3.6Q29.5 0.9 21.2 0.9M60.8 0.9Q56.1 0.9 52.3-1Q48.5-2.9 46.3-6.6Q44.2-10.2 44.2-15.4L44.2-16.4Q44.2-21.5 46.3-25.2Q48.5-28.8 52.3-30.7Q56.1-32.6 60.8-32.6Q65.5-32.6 69.3-30.7Q73.1-28.8 75.3-25.2Q77.4-21.5 77.4-16.4L77.4-15.4Q77.4-10.2 75.3-6.6Q73.1-2.9 69.3-1Q65.5 0.9 60.8 0.9M60.8-6.3Q64.5-6.3 66.9-8.7Q69.4-11.1 69.4-15.6L69.4-16.2Q69.4-20.7 67-23.1Q64.6-25.5 60.8-25.5Q57.1-25.5 54.7-23.1Q52.2-20.7 52.2-16.2L52.2-15.6Q52.2-11.1 54.7-8.7Q57.1-6.3 60.8-6.3M92.9 12.8L84.9 12.8L84.9-31.7L92.8-31.7L92.8-27.9L94-27.9Q95-29.8 97.3-31.2Q99.6-32.6 103.9-32.6Q107.8-32.6 111-30.8Q114.3-28.9 116.3-25.2Q118.3-21.6 118.3-16.4L118.3-15.4Q118.3-10.2 116.3-6.5Q114.3-2.9 111-1Q107.8 0.9 103.9 0.9Q101.1 0.9 99.1 0.2Q97.2-0.4 96-1.5Q94.8-2.6 94.1-3.6L92.9-3.6L92.9 12.8M101.5-6.1Q105.3-6.1 107.7-8.5Q110.2-10.9 110.2-15.6L110.2-16.2Q110.2-20.8 107.7-23.2Q105.2-25.6 101.5-25.6Q97.8-25.6 95.3-23.2Q92.8-20.8 92.8-16.2L92.8-15.6Q92.8-10.9 95.3-8.5Q97.8-6.1 101.5-6.1M133.8 0L125.7 0L125.7-31.7L133.8-31.7L133.8 0M129.7-35.5Q127.6-35.5 126-36.9Q124.5-38.3 124.5-40.6Q124.5-42.9 126-44.3Q127.6-45.7 129.7-45.7Q132-45.7 133.4-44.3Q134.9-42.9 134.9-40.6Q134.9-38.3 133.4-36.9Q132-35.5 129.7-35.5M150.8 0L142.7 0L142.7-44.8L150.8-44.8L150.8 0M174.8 0.9Q170.1 0.9 166.3-1Q162.6-2.9 160.4-6.6Q158.2-10.2 158.2-15.4L158.2-16.4Q158.2-21.5 160.4-25.2Q162.6-28.8 166.3-30.7Q170.1-32.6 174.8-32.6Q179.6-32.6 183.4-30.7Q187.1-28.8 189.3-25.2Q191.5-21.5 191.5-16.4L191.5-15.4Q191.5-10.2 189.3-6.6Q187.1-2.9 183.4-1Q179.6 0.9 174.8 0.9M174.8-6.3Q178.6-6.3 181-8.7Q183.4-11.1 183.4-15.6L183.4-16.2Q183.4-20.7 181-23.1Q178.6-25.5 174.8-25.5Q171.1-25.5 168.7-23.1Q166.3-20.7 166.3-16.2L166.3-15.6Q166.3-11.1 168.7-8.7Q171.1-6.3 174.8-6.3M219 0L210 0Q206.9 0 205-2Q203-3.9 203-7.2L203-25.1L195.1-25.1L195.1-31.7L203-31.7L203-41.6L211.1-41.6L211.1-31.7L219.8-31.7L219.8-25.1L211.1-25.1L211.1-8.6Q211.1-6.7 212.9-6.7L219-6.7"/>
+      </g>
+      <!-- shimmer sweep clipped to the Copilot word -->
+      <g clip-path="url(#h-shine)">
+        <rect x="200" y="-52" width="46" height="66" fill="#ffffff" opacity="0.55" transform="skewX(-22)">
+          <animate attributeName="x" dur="8s" repeatCount="indefinite" values="150;150;470;470" keyTimes="0;0.16;0.36;1"/>
+        </rect>
+      </g>
+    </g>
+
+    <text x="117" y="184" font-family="'Segoe UI',system-ui,-apple-system,sans-serif" font-size="17" fill="#ffffff">Paste your app's store listing.</text>
+    <text x="117" y="207" font-family="'Segoe UI',system-ui,-apple-system,sans-serif" font-size="17" fill="#b9a9e6">Get a graded, validated launch kit — in a minute.</text>
+
+    <g class="h-metric" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+      <text x="117" y="248" font-size="21" font-weight="700" fill="#8fb7c8" letter-spacing="1">ASO SCORE
+        <tspan fill="#ff2d95"> 27</tspan><tspan fill="#6b5a99"> → </tspan><tspan fill="#00d4ff">93</tspan></text>
+    </g>
+    <text x="117" y="282" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#6b5a99" letter-spacing="0.6">Next.js · Claude · 28-rule engine · 130 tests · MIT</text>
+
+    <!-- ===================== RIGHT: PRODUCT STORY ===================== -->
+    <g class="h-story">
+      <!-- listing card -->
+      <g class="h-card">
+        <rect x="628" y="70" width="250" height="182" rx="16" fill="#1a0940" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1.5"/>
+        <rect x="648" y="90" width="46" height="46" rx="11" fill="url(#h-tileicon)"/>
+        <rect x="706" y="96" width="120" height="12" rx="6" fill="#eaf6ff"/>
+        <rect x="706" y="116" width="86" height="10" rx="5" fill="#8a7bb8"/>
+        <rect x="648" y="152" width="210" height="8" rx="4" fill="#3b2a63"/>
+        <rect x="648" y="168" width="210" height="8" rx="4" fill="#3b2a63"/>
+        <rect x="648" y="184" width="150" height="8" rx="4" fill="#3b2a63"/>
+        <!-- score bar -->
+        <rect x="648" y="214" width="210" height="16" rx="8" fill="#0d0221"/>
+        <rect x="648" y="214" width="0" height="16" rx="8" fill="url(#h-score)">
+          <animate attributeName="width" dur="8s" repeatCount="indefinite" values="0;0;57;195;195;195" keyTimes="0;0.24;0.30;0.44;0.95;1"/>
+        </rect>
+      </g>
+
+      <!-- grade badge: F27 -> A93 -->
+      <g filter="url(#h-bloom)">
+        <g class="h-badgeF">
+          <circle cx="846" cy="104" r="24" fill="#2a0d1f" stroke="#ff2d95" stroke-width="2.5"/>
+          <text x="846" y="113" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="26" font-weight="800" fill="#ff2d95">F</text>
+        </g>
+        <g class="h-badgeA">
+          <circle cx="846" cy="104" r="24" fill="#082530" stroke="#00d4ff" stroke-width="2.5"/>
+          <text x="846" y="113" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="26" font-weight="800" fill="#00d4ff">A</text>
+        </g>
+      </g>
+      <!-- score number on the bar -->
+      <text class="h-num27" x="864" y="245" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#ff2d95">27/100</text>
+      <text class="h-num93" x="864" y="245" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#00d4ff">93/100</text>
+
+      <!-- launch-kit tiles fan out -->
+      <g font-family="'Segoe UI',system-ui,sans-serif" font-size="12.5" fill="#eaf6ff">
+        <g class="h-t1"><rect x="918" y="72" width="150" height="40" rx="11" fill="#141033" stroke="#00d4ff" stroke-width="1.5"/><circle cx="938" cy="92" r="6" fill="#00d4ff"/><text x="952" y="96">ASO rewrite ✓</text></g>
+        <g class="h-t2"><rect x="1080" y="96" width="150" height="40" rx="11" fill="#141033" stroke="#ff2d95" stroke-width="1.5"/><circle cx="1100" cy="116" r="6" fill="#ff2d95"/><text x="1114" y="120">Product Hunt</text></g>
+        <g class="h-t3"><rect x="918" y="128" width="150" height="40" rx="11" fill="#141033" stroke="#8b00ff" stroke-width="1.5"/><circle cx="938" cy="148" r="6" fill="#8b00ff"/><text x="952" y="152">7-day social</text></g>
+        <g class="h-t4"><rect x="1080" y="156" width="150" height="40" rx="11" fill="#141033" stroke="#00ffd1" stroke-width="1.5"/><circle cx="1100" cy="176" r="6" fill="#00ffd1"/><text x="1114" y="180">Communities</text></g>
+        <g class="h-t5"><rect x="918" y="186" width="150" height="40" rx="11" fill="#141033" stroke="#ff6b35" stroke-width="1.5"/><circle cx="938" cy="206" r="6" fill="#ff6b35"/><text x="952" y="210">Press blurbs</text></g>
+      </g>
+
+      <!-- comet climax -->
+      <g filter="url(#h-soft)">
+        <ellipse cx="0" cy="0" rx="34" ry="7" fill="#00d4ff">
+          <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.70;0.78;0.86;1"/>
+          <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" path="M636 236 Q900 120 1236 70" keyPoints="0;0;1;1" keyTimes="0;0.70;0.86;1" calcMode="linear"/>
+        </ellipse>
+      </g>
+    </g>
+  </g>
+  <rect x="8.75" y="8.75" width="1262.5" height="302.5" rx="25.5" fill="none" stroke="#00d4ff" stroke-opacity="0.25" stroke-width="1.5"/>
+</svg>
