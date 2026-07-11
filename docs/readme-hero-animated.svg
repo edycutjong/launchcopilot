@@ -92,11 +92,15 @@
     </rect>
 
     <!-- ===================== LEFT: BRAND ===================== -->
-    <!-- mini animated mark (miniature of the app icon: gauge + launch arrow) -->
-    <g class="h-mark" transform="translate(48,86)" filter="url(#h-bloom)">
-      <path d="M10.4 43.6 A22 22 0 1 1 41.6 43.6" fill="none" stroke="url(#h-score)" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="41.6" cy="43.6" r="4" fill="#00d4ff"/>
-      <path d="M26 12 L38 26 L33 26 L33 40 L19 40 L19 26 L14 26 Z" fill="#eaf6ff"/>
+    <!-- mini animated mark (logo bug beside the wordmark — inset from the rounded corner).
+         Outer group positions; inner .h-mark does the bob. A CSS transform on an element
+         overrides its transform ATTRIBUTE, so positioning must live on a separate group. -->
+    <g transform="translate(63,107)" filter="url(#h-bloom)">
+      <g class="h-mark">
+        <path d="M10.4 43.6 A22 22 0 1 1 41.6 43.6" fill="none" stroke="url(#h-score)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="41.6" cy="43.6" r="4" fill="#00d4ff"/>
+        <path d="M26 12 L38 26 L33 26 L33 40 L19 40 L19 26 L14 26 Z" fill="#eaf6ff"/>
+      </g>
     </g>
     <text x="116" y="72" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="2.4" fill="#00d4ff" opacity="0.9">APP-STORE OPTIMIZER × AI LAUNCH KIT</text>
 
