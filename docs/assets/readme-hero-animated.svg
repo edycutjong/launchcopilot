@@ -40,10 +40,11 @@
       @keyframes h-num93 { 0%,32%{opacity:0} 40%{opacity:1} 95%{opacity:1} 100%{opacity:0} }
       @keyframes h-metric{ 0%,100%{opacity:.85} 50%{opacity:1} }
       @keyframes h-t1{ 0%,40%{opacity:0;transform:scale(.6)} 44%{opacity:1;transform:scale(1.1)} 48%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
-      @keyframes h-t2{ 0%,45%{opacity:0;transform:scale(.6)} 49%{opacity:1;transform:scale(1.1)} 53%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
-      @keyframes h-t3{ 0%,50%{opacity:0;transform:scale(.6)} 54%{opacity:1;transform:scale(1.1)} 58%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
-      @keyframes h-t4{ 0%,55%{opacity:0;transform:scale(.6)} 59%{opacity:1;transform:scale(1.1)} 63%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
-      @keyframes h-t5{ 0%,60%{opacity:0;transform:scale(.6)} 64%{opacity:1;transform:scale(1.1)} 68%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t2{ 0%,43%{opacity:0;transform:scale(.6)} 47%{opacity:1;transform:scale(1.1)} 51%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t3{ 0%,46%{opacity:0;transform:scale(.6)} 50%{opacity:1;transform:scale(1.1)} 54%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t4{ 0%,49%{opacity:0;transform:scale(.6)} 53%{opacity:1;transform:scale(1.1)} 57%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t5{ 0%,52%{opacity:0;transform:scale(.6)} 56%{opacity:1;transform:scale(1.1)} 60%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
+      @keyframes h-t6{ 0%,55%{opacity:0;transform:scale(.6)} 59%{opacity:1;transform:scale(1.1)} 63%{transform:scale(1)} 95%{opacity:1;transform:scale(1)} 100%{opacity:0} }
       @keyframes h-blobA{ 0%{transform:translate(0,0)} 50%{transform:translate(38px,-20px)} 100%{transform:translate(0,0)} }
       @keyframes h-blobB{ 0%{transform:translate(0,0)} 50%{transform:translate(-30px,18px)} 100%{transform:translate(0,0)} }
       @keyframes h-mark { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
@@ -59,10 +60,11 @@
       .h-t3{animation:h-t3 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
       .h-t4{animation:h-t4 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
       .h-t5{animation:h-t5 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      .h-t6{animation:h-t6 8s ease-out infinite;transform-box:fill-box;transform-origin:center}
       .h-blobA{animation:h-blobA 17s ease-in-out infinite}
       .h-blobB{animation:h-blobB 19s ease-in-out infinite}
       .h-mark{animation:h-mark 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-      @media (prefers-reduced-motion: reduce){ *{animation:none!important} .h-story,.h-card,.h-badgeA,.h-num93,.h-t1,.h-t2,.h-t3,.h-t4,.h-t5{opacity:1} .h-badgeF,.h-num27{opacity:0} }
+      @media (prefers-reduced-motion: reduce){ *{animation:none!important} .h-story,.h-card,.h-badgeA,.h-num93,.h-t1,.h-t2,.h-t3,.h-t4,.h-t5,.h-t6{opacity:1} .h-badgeF,.h-num27{opacity:0} }
     </style>
   </defs>
 
@@ -150,17 +152,18 @@
           <text x="846" y="113" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="26" font-weight="800" fill="#00d4ff">A</text>
         </g>
       </g>
-      <!-- score number on the bar -->
-      <text class="h-num27" x="864" y="245" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#ff2d95">27/100</text>
-      <text class="h-num93" x="864" y="245" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#00d4ff">93/100</text>
+      <!-- score number under the bar, right-aligned inside the card -->
+      <text class="h-num27" x="858" y="247" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#ff2d95">27/100</text>
+      <text class="h-num93" x="858" y="247" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="15" font-weight="700" fill="#00d4ff">93/100</text>
 
-      <!-- launch-kit tiles fan out -->
-      <g font-family="'Segoe UI',system-ui,sans-serif" font-size="12.5" fill="#eaf6ff">
-        <g class="h-t1"><rect x="918" y="72" width="150" height="40" rx="11" fill="#141033" stroke="#00d4ff" stroke-width="1.5"/><circle cx="938" cy="92" r="6" fill="#00d4ff"/><text x="952" y="96">ASO rewrite ✓</text></g>
-        <g class="h-t2"><rect x="1080" y="96" width="150" height="40" rx="11" fill="#141033" stroke="#ff2d95" stroke-width="1.5"/><circle cx="1100" cy="116" r="6" fill="#ff2d95"/><text x="1114" y="120">Product Hunt</text></g>
-        <g class="h-t3"><rect x="918" y="128" width="150" height="40" rx="11" fill="#141033" stroke="#8b00ff" stroke-width="1.5"/><circle cx="938" cy="148" r="6" fill="#8b00ff"/><text x="952" y="152">7-day social</text></g>
-        <g class="h-t4"><rect x="1080" y="156" width="150" height="40" rx="11" fill="#141033" stroke="#00ffd1" stroke-width="1.5"/><circle cx="1100" cy="176" r="6" fill="#00ffd1"/><text x="1114" y="180">Communities</text></g>
-        <g class="h-t5"><rect x="918" y="186" width="150" height="40" rx="11" fill="#141033" stroke="#ff6b35" stroke-width="1.5"/><circle cx="938" cy="206" r="6" fill="#ff6b35"/><text x="952" y="210">Press blurbs</text></g>
+      <!-- launch-kit tiles fan out — aligned 3×2 grid -->
+      <g font-family="'Segoe UI',system-ui,sans-serif" font-size="13" fill="#eaf6ff">
+        <g class="h-t1"><rect x="908" y="76" width="166" height="48" rx="12" fill="#141033" stroke="#00d4ff" stroke-width="1.5"/><circle cx="930" cy="100" r="6" fill="#00d4ff"/><text x="946" y="105">ASO rewrite</text></g>
+        <g class="h-t2"><rect x="1084" y="76" width="166" height="48" rx="12" fill="#141033" stroke="#ff2d95" stroke-width="1.5"/><circle cx="1106" cy="100" r="6" fill="#ff2d95"/><text x="1122" y="105">Product Hunt</text></g>
+        <g class="h-t3"><rect x="908" y="134" width="166" height="48" rx="12" fill="#141033" stroke="#8b00ff" stroke-width="1.5"/><circle cx="930" cy="158" r="6" fill="#8b00ff"/><text x="946" y="163">7-day social</text></g>
+        <g class="h-t4"><rect x="1084" y="134" width="166" height="48" rx="12" fill="#141033" stroke="#00ffd1" stroke-width="1.5"/><circle cx="1106" cy="158" r="6" fill="#00ffd1"/><text x="1122" y="163">Communities</text></g>
+        <g class="h-t5"><rect x="908" y="192" width="166" height="48" rx="12" fill="#141033" stroke="#ff6b35" stroke-width="1.5"/><circle cx="930" cy="216" r="6" fill="#ff6b35"/><text x="946" y="221">Press blurbs</text></g>
+        <g class="h-t6"><rect x="1084" y="192" width="166" height="48" rx="12" fill="#141033" stroke="#00d4ff" stroke-width="1.5"/><circle cx="1106" cy="216" r="6" fill="#00d4ff"/><text x="1122" y="221">Persona QA</text></g>
       </g>
 
       <!-- comet climax -->
