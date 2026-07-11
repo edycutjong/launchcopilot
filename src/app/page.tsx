@@ -2,63 +2,96 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
+      {/* backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 50% 120%, rgba(255,107,53,.4), rgba(255,45,149,.22) 34%, transparent 62%)," +
+            "radial-gradient(55% 60% at 15% 10%, rgba(139,0,255,.5), transparent 60%)," +
+            "radial-gradient(60% 60% at 88% 24%, rgba(0,212,255,.3), transparent 60%)," +
+            "linear-gradient(160deg,#160730,#0d0221 55%,#07010f)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          background:
+            "linear-gradient(rgba(0,212,255,.10) 1px,transparent 1px) 0 0/100% 46px," +
+            "linear-gradient(90deg,rgba(0,212,255,.08) 1px,transparent 1px) 0 0/46px 100%",
+          maskImage: "linear-gradient(180deg,transparent 58%,#000)",
+          WebkitMaskImage: "linear-gradient(180deg,transparent 58%,#000)",
+        }}
+      />
+
+      <main className="relative z-10 flex max-w-2xl flex-col items-center gap-7">
+        <div className="flex items-center gap-4">
+          <Image src="/icon.svg" alt="" width={72} height={72} priority unoptimized />
+          <span className="text-5xl font-bold tracking-tight sm:text-6xl">
+            <span className="text-white">Launch</span>
+            <span
+              style={{
+                background: "linear-gradient(90deg,#00d4ff,#8b00ff 52%,#ff2d95)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Copilot
+            </span>
+          </span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <p className="text-mono text-xs uppercase tracking-[0.25em] text-cyan-300/90">
+          App-store optimizer × AI launch kit
+        </p>
+
+        <h1 className="text-balance text-2xl font-medium leading-snug text-white sm:text-3xl">
+          Your app launched. Now make it found.
+        </h1>
+        <p className="max-w-xl text-pretty text-lg leading-relaxed text-violet-200/80">
+          Paste your newly launched app&apos;s store listing → get a graded ASO report
+          (28 deterministic rules) and a complete, validated launch kit — in about a minute.
+        </p>
+
+        <div
+          className="flex items-center gap-4 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-mono text-lg font-bold"
+          role="img"
+          aria-label="ASO score improves from 27 to 93"
+        >
+          <span className="text-white/60 text-sm">ASO SCORE</span>
+          <span style={{ color: "#ff2d95" }}>27</span>
+          <span className="text-violet-400">→</span>
+          <span style={{ color: "#00d4ff" }}>93</span>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://github.com/"
+            className="rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#0d0221] transition hover:bg-white/85"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            View on GitHub
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#api"
+            className="rounded-full border border-cyan-400/50 px-6 py-2.5 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
           >
-            Documentation
+            Grade a listing via API
           </a>
         </div>
+
+        <p id="api" className="mt-2 max-w-xl font-mono text-xs leading-relaxed text-violet-300/60">
+          The 28-rule ASO grader is live now — no API key needed:
+          <br />
+          <code className="text-cyan-300/80">
+            curl -X POST /api/analyze -d @listing.json
+          </code>
+          <br />
+          The full paste-to-kit flow (Claude pipeline + persona-panel QA) is wiring up.
+        </p>
       </main>
     </div>
   );

@@ -155,7 +155,7 @@ describe("ios-kw-stopwords", () => {
 describe("ios-kw-category", () => {
   it("fires when category name sits in keywords", () =>
     expect(
-      ruleIds(clean({ keywords: clean().keywords.replace("quiet mind", "productivity") })),
+      ruleIds(clean({ keywords: (clean().keywords ?? "").replace("quiet mind", "productivity") })),
     ).toContain("ios-kw-category"));
   it("passes otherwise", () =>
     expect(ruleIds(clean())).not.toContain("ios-kw-category"));
