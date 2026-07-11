@@ -3,6 +3,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="tests" src="https://img.shields.io/badge/tests-145%20passing-00d4ff?style=flat-square&labelColor=0d0221">
   <img alt="engine" src="https://img.shields.io/badge/ASO%20engine-28%20rules-ff2d95?style=flat-square&labelColor=0d0221">
   <img alt="stack" src="https://img.shields.io/badge/Next.js-Claude-8b00ff?style=flat-square&labelColor=0d0221">
