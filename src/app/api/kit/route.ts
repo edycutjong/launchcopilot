@@ -5,7 +5,9 @@ import { isDemoMode, replayDemo } from "@/lib/pipeline/demo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+// 60s is the Vercel hobby/fluid ceiling; the demo replay finishes in ~8s. Raise
+// to 300 on Pro if running the live pipeline (which takes minutes).
+export const maxDuration = 60;
 
 // Tiny in-memory rate limit (resets on redeploy — documented limitation).
 const hits = new Map<string, { n: number; day: string }>();

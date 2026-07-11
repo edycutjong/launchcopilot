@@ -1,22 +1,14 @@
-import fs from "node:fs";
-import path from "node:path";
+import demoKitJson from "../../../data/demo-kit.json";
 import type { Kit, KitEvent } from "./index";
 
 export function isDemoMode(): boolean {
   return process.env.DEMO_MODE === "1" || !process.env.ANTHROPIC_API_KEY;
 }
 
-let cached: Kit | null = null;
+// Static import so Vercel's serverless file-tracing bundles the recorded kit
+// (a runtime fs read of a computed path would not be traced).
 export function loadDemoKit(): Kit | null {
-  if (cached) return cached;
-  try {
-    const p = path.join(process.cwd(), "data", "demo-kit.json");
-    cached = JSON.parse(fs.readFileSync(p, "utf8")) as Kit;
-    cached.demoMode = true;
-    return cached;
-  } catch {
-    return null;
-  }
+  return { ...(demoKitJson as unknown as Kit), demoMode: true };
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

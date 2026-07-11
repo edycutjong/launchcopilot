@@ -1,0 +1,9 @@
+# Not needed to build/run the app — keeps the deploy upload lean.
+docs/assets
+e2e
+scripts
+coverage
+playwright-report
+test-results
+.github
+CHANGELOG.md
