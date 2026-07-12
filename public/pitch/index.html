@@ -4,7 +4,7 @@
   NAVIGATE: ← → or Space to advance · ESC for overview grid · click a tile to jump.
   PRESENTER: press P for speaker notes + dimmed chrome.  CONTRAST: press C to debug projector legibility.
   PRINT PDF: Cmd/Ctrl+P → Save as PDF → Landscape → clean 10-page deck.
-  SWAP: replace every <img src="placehold.co…"> (marked "SWAP:") with a real screenshot.
+  SCREENSHOTS: real product captures live in /pitch/*.png (served from public/pitch/).
   REBRAND: edit the :root CSS variables below.
 -->
 <html lang="en">
@@ -218,10 +218,10 @@
           <span class="chip contrast-check">PH · social · community · press</span>
         </div>
       </div>
-      <!-- SWAP: replace with real grader screenshot (paste → auto-fill → grade) -->
+      <!-- real screenshot: landing / live tool -->
       <div class="browser contrast-check">
         <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><a class="url" href="https://launchcopilot.edycu.dev" target="_blank" rel="noopener">launchcopilot.edycu.dev</a></div>
-        <img alt="LaunchCopilot grader" src="https://placehold.co/1100x620/0a0618/00d4ff?text=Paste+link+%E2%86%92+auto-fill+%E2%86%92+ASO+score" />
+        <img alt="LaunchCopilot — paste a store link, auto-fill, and grade" src="/pitch/shot-landing.png" />
       </div>
     </div>
     <div class="spacer"></div>
@@ -266,25 +266,26 @@
     <h2 class="contrast-check" style="margin-top:20px;font-size:58px">Paste a link → graded → rewritten.</h2>
     <div class="spacer"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
-      <!-- SWAP: real screenshot of paste + C-grade -->
+      <!-- real screenshot: auto-fill + C grade -->
       <div style="position:relative">
         <div class="browser contrast-check">
           <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><a class="url" href="https://launchcopilot.edycu.dev" target="_blank" rel="noopener">launchcopilot.edycu.dev</a></div>
-          <img alt="Auto-fill + grade" src="https://placehold.co/900x520/0a0618/ff2d95?text=Auto-fill+from+store+link+%E2%86%92+C+76%2F100" />
+          <img alt="Auto-fill from a store link, then grade to C 76/100" src="/pitch/shot-autofill.png" />
         </div>
         <span class="callout" style="top:-18px;left:-18px">1</span>
         <p class="mono dim" style="font-size:20px;margin-top:14px">Paste an App Store / Play link — every field fills, then grade.</p>
       </div>
-      <!-- SWAP: real screenshot of A/B rewrite 34→93 -->
+      <!-- real screenshot: validated scorecard (34 → 93) -->
       <div style="position:relative">
         <div class="browser contrast-check">
           <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><a class="url" href="https://launchcopilot.edycu.dev" target="_blank" rel="noopener">launchcopilot.edycu.dev</a></div>
-          <img alt="Validated rewrite + kit" src="https://placehold.co/900x520/0a0618/00d4ff?text=A%2FB+rewrite+34+%E2%86%92+93+%2B+launch+kit" />
+          <img alt="Deterministic scorecard — the validated rewrite, re-graded to 93/100" src="/pitch/shot-grade.png" />
         </div>
         <span class="callout" style="top:-18px;left:-18px">2</span>
         <p class="mono dim" style="font-size:20px;margin-top:14px">Validated rewrite (34→93) + Product Hunt, social, community, press.</p>
       </div>
     </div>
+    <p class="mono contrast-check" style="text-align:center;margin-top:34px;font-size:22px;color:var(--color-muted)">▶ Watch the full 60-second run — <a href="https://youtu.be/2if0sEFKe8c" target="_blank" rel="noopener">youtu.be/2if0sEFKe8c</a></p>
     <div class="spacer"></div>
     <aside class="speaker-notes">Live, this takes about a minute. Paste, it auto-fills and grades to a C with exact fixes. Generate — and the store rewrite climbs from 34 to 93, validated by the same engine, alongside a full launch kit. Copy anything, or download the ZIP.</aside>
   </section>
@@ -364,6 +365,7 @@
         <div class="mono contrast-check" style="margin-top:34px;font-size:24px;line-height:2;color:var(--color-muted)">
           <div><span class="dim">try&nbsp;&nbsp;</span> <a href="https://launchcopilot.edycu.dev" target="_blank" rel="noopener">launchcopilot.edycu.dev</a></div>
           <div><span class="dim">deck&nbsp;</span> <a href="https://launchcopilot.edycu.dev/pitch" target="_blank" rel="noopener">launchcopilot.edycu.dev/pitch</a></div>
+          <div><span class="dim">video</span> <a href="https://youtu.be/2if0sEFKe8c" target="_blank" rel="noopener">youtu.be/2if0sEFKe8c</a></div>
           <div><span class="dim">api&nbsp;&nbsp;</span> POST /api/analyze</div>
         </div>
       </div>
