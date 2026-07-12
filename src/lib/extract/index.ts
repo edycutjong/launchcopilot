@@ -14,25 +14,11 @@ const UA =
 export class ExtractError extends Error {}
 
 /**
- * SSRF guard. This service only ever needs to reach the two public app-store
- * hosts, so every outbound request runs through {@link fetchWithTimeout}, which
- * rejects any URL whose host isn't on this allow-list. Picking the host from a
- * fixed allow-list (rather than trusting user input) is the documented fix for
- * CodeQL `js/request-forgery` / CWE-918.
+ * SSRF allow-list. This service only ever reaches these three fixed app-store
+ * hosts; {@link fetchWithTimeout} parses every outbound URL and refuses any host
+ * that isn't in this set (CWE-918 / CodeQL `js/request-forgery`).
  */
 const ALLOWED_HOSTS = new Set(["itunes.apple.com", "apps.apple.com", "play.google.com"]);
-
-function assertAllowedHost(url: string): void {
-  let parsed: URL;
-  try {
-    parsed = new URL(url);
-  } catch {
-    throw new ExtractError("Invalid store URL.");
-  }
-  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.has(parsed.hostname.toLowerCase())) {
-    throw new ExtractError("Only App Store and Google Play links can be fetched.");
-  }
-}
 
 export interface ListingPreview {
   storeLabel: string;
@@ -70,11 +56,22 @@ interface Raw {
 }
 
 async function fetchWithTimeout(url: string, ms = 12000) {
-  assertAllowedHost(url);
+  // SSRF barrier: parse the URL, reject any non-allow-listed host, and hand the
+  // *validated* URL object (not the raw string) to fetch, so the check provably
+  // guards the request. (CWE-918 / CodeQL js/request-forgery.)
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new ExtractError("Invalid store URL.");
+  }
+  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.has(parsed.hostname.toLowerCase())) {
+    throw new ExtractError("Only App Store and Google Play links can be fetched.");
+  }
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
-    return await fetch(url, {
+    return await fetch(parsed, {
       signal: ctrl.signal,
       cache: "no-store",
       headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" },
@@ -88,25 +85,30 @@ function decodeEntities(s: string): string {
   return s
     .replace(/\\u003c/gi, "<")
     .replace(/\\u003e/gi, ">")
-    .replace(/\\u0026/gi, "&")
     .replace(/\\"/g, '"')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&#x27;/gi, "'")
     .replace(/&apos;/g, "'")
-    .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ");
+    .replace(/&nbsp;/g, " ")
+    // Ampersand producers go LAST — after every &xxx; decode — so we never
+    // double-unescape (e.g. "&amp;lt;" → "&lt;", never "<").
+    .replace(/&amp;/g, "&")
+    .replace(/\\u0026/gi, "&");
 }
 
 function stripTags(html: string): string {
-  return decodeEntities(
-    html
-      .replace(/<br\s*\/?>/gi, "\n")
-      .replace(/<\/p>/gi, "\n\n")
-      .replace(/<[^>]+>/g, "")
-  )
+  let text = html.replace(/<br\s*\/?>/gi, "\n").replace(/<\/p>/gi, "\n\n");
+  // Strip tags repeatedly until stable, so overlapping constructs like
+  // "<scr<script>ipt>" can't survive a single pass (CodeQL incomplete-sanitization).
+  let previous = "";
+  while (text !== previous) {
+    previous = text;
+    text = text.replace(/<[^>]*>/g, "");
+  }
+  return decodeEntities(text)
     .replace(/\n{3,}/g, "\n\n")
     .replace(/[ \t]{2,}/g, " ")
     .trim();
@@ -116,11 +118,11 @@ function detectStore(input: string): { store: Store; id: string } | null {
   const raw = input.trim();
   try {
     const u = new URL(raw);
-    if (u.hostname.includes("apple.com")) {
+    if (u.hostname.endsWith(".apple.com")) {
       const m = u.pathname.match(/id(\d+)/) || raw.match(/id(\d+)/);
       if (m) return { store: "apple", id: m[1] };
     }
-    if (u.hostname.includes("play.google.com")) {
+    if (u.hostname === "play.google.com") {
       const id = u.searchParams.get("id");
       if (id) return { store: "google", id };
     }
@@ -129,7 +131,10 @@ function detectStore(input: string): { store: Store; id: string } | null {
   }
   const appleId = raw.match(/id(\d+)/);
   if (appleId) return { store: "apple", id: appleId[1] };
-  const gid = raw.match(/[?&]id=([\w.]+)/) || (/^[a-z][\w.]+\.[\w.]+$/i.test(raw) ? [null, raw] : null);
+  // Reverse-domain package id (dot-separated word segments). The pattern is
+  // linear — no overlapping quantifiers — to avoid polynomial ReDoS on the
+  // user-supplied string (CodeQL js/polynomial-redos).
+  const gid = raw.match(/[?&]id=([\w.]+)/) || (/^[a-z]\w*(?:\.\w+)+$/i.test(raw) ? [null, raw] : null);
   if (gid && gid[1]) return { store: "google", id: gid[1] };
   return null;
 }

@@ -26,9 +26,9 @@ interface Routes {
 
 function mockFetch(routes: Routes) {
   const fn = vi.fn(async (url: string | URL) => {
-    const u = String(url);
-    if (u.includes("itunes.apple.com/lookup")) return response(routes.itunes ?? '{"results":[]}', routes.itunesOk ?? true);
-    if (u.includes("play.google.com")) return response(routes.play ?? "", routes.playOk ?? true);
+    const host = new URL(String(url)).hostname; // exact host, not substring
+    if (host === "itunes.apple.com") return response(routes.itunes ?? '{"results":[]}', routes.itunesOk ?? true);
+    if (host === "play.google.com") return response(routes.play ?? "", routes.playOk ?? true);
     return response(routes.subtitle ?? "", routes.subtitleOk ?? true); // apps.apple.com subtitle page
   });
   vi.stubGlobal("fetch", fn);
