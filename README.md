@@ -68,20 +68,15 @@ Solo developers ship good apps and get **six downloads — four of them friends.
 **Next.js 16 + React 19 + Tailwind v4** (one codebase, app + API) · **Claude** (`claude-opus-4-8` writers + `claude-haiku-4-5` persona panel) · **Zod** schema-constrained generation · **Vitest / Playwright / semantic-release** for the harness.
 
 ```mermaid
-flowchart TB
-  subgraph r1[" "]
-    direction LR
-    A["🔗 Paste store link"] --> B["Extract listing<br/>iTunes API · Play scrape"] --> C["28-rule ASO lint<br/><i>deterministic · sub-ms · no AI</i>"] --> D["Score 0–100<br/>+ per-field fixes"]
-  end
-  subgraph r2[" "]
-    direction RL
-    E["Claude Opus<br/>5 parallel writers"] --> F{"Re-lint the rewrite<br/>score ≥ 90?"}
-    F -- "yes" --> G["Claude Haiku<br/>persona-panel QA"] --> H["🚀 Launch kit<br/>store · PH · social · community · press"]
-    F -- "no · inject findings" --> E
-  end
-  D --> E
-  style r1 fill:none,stroke:none
-  style r2 fill:none,stroke:none
+flowchart LR
+  A["🔗 Paste store link"] --> B["Extract listing<br/>iTunes API · Play scrape"]
+  B --> C["28-rule ASO lint<br/><i>deterministic · sub-ms · no AI</i>"]
+  C --> D["Score 0–100<br/>+ per-field fixes"]
+  D --> E["Claude Opus<br/>5 parallel writers"]
+  E --> F{"Re-lint the rewrite<br/>score ≥ 90?"}
+  F -- "no · inject findings" --> E
+  F -- "yes" --> G["Claude Haiku<br/>persona-panel QA"]
+  G --> H["🚀 Launch kit<br/>store · PH · social · community · press"]
 ```
 
 **Where the interesting code lives** (for judges skimming the source):
@@ -104,7 +99,7 @@ The theme is **effective promotion of a newly launched mobile app** — LaunchCo
 npm install
 npm test                                              # 150 unit tests
 npm run aso-lint -- data/fixtures/pocketplants.json   # CLI: 27/100 (F) + fixes
-npm run dev                                            # app at http://localhost:3000
+npm run dev                                           # app at http://localhost:3000
 ```
 
 > **Note for judges — you can skip the API key.** Grading, the CLI, and the E2E suite all run with **no credentials** (`DEMO_MODE`). A key (`ANTHROPIC_API_KEY` in `.env.local`) is only needed to generate the AI launch kit; the deterministic grader never needs one.
