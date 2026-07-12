@@ -69,16 +69,15 @@ interface Raw {
   warnings: string[];
 }
 
-async function fetchWithTimeout(url: string, init: RequestInit = {}, ms = 12000) {
+async function fetchWithTimeout(url: string, ms = 12000) {
   assertAllowedHost(url);
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
     return await fetch(url, {
-      ...init,
       signal: ctrl.signal,
       cache: "no-store",
-      headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9", ...(init.headers || {}) },
+      headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" },
     });
   } finally {
     clearTimeout(t);
@@ -153,7 +152,7 @@ function findAppleSubtitle(html: string, appName: string): string | undefined {
 }
 
 async function fetchAppleSubtitle(url: string, appName: string): Promise<string | undefined> {
-  const res = await fetchWithTimeout(url, {}, 8000);
+  const res = await fetchWithTimeout(url, 8000);
   if (!res.ok) return undefined;
   return findAppleSubtitle(await res.text(), appName);
 }
@@ -298,7 +297,6 @@ async function extractGoogle(id: string): Promise<Raw> {
 
   const installsMatch =
     html.match(/([0-9][\d.,]*[KMB]?\+)\s*<\/div>\s*<div[^>]*>\s*Downloads/i) ||
-    html.match(/>([0-9][\d.,]*[KMB]?\+)<\/div><div[^>]*>Downloads/i) ||
     html.match(/([0-9][\d.,]*[KMB]?\+)[^<]{0,4}<[^>]*>\s*Downloads/i);
   const installs = installsMatch ? installsMatch[1] : undefined;
 
