@@ -13,6 +13,27 @@ const UA =
 
 export class ExtractError extends Error {}
 
+/**
+ * SSRF guard. This service only ever needs to reach the two public app-store
+ * hosts, so every outbound request runs through {@link fetchWithTimeout}, which
+ * rejects any URL whose host isn't on this allow-list. Picking the host from a
+ * fixed allow-list (rather than trusting user input) is the documented fix for
+ * CodeQL `js/request-forgery` / CWE-918.
+ */
+const ALLOWED_HOSTS = new Set(["itunes.apple.com", "apps.apple.com", "play.google.com"]);
+
+function assertAllowedHost(url: string): void {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new ExtractError("Invalid store URL.");
+  }
+  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.has(parsed.hostname.toLowerCase())) {
+    throw new ExtractError("Only App Store and Google Play links can be fetched.");
+  }
+}
+
 export interface ListingPreview {
   storeLabel: string;
   name: string;
@@ -49,6 +70,7 @@ interface Raw {
 }
 
 async function fetchWithTimeout(url: string, init: RequestInit = {}, ms = 12000) {
+  assertAllowedHost(url);
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
@@ -115,12 +137,25 @@ function detectStore(input: string): { store: Store; id: string } | null {
 
 // ---------------- APPLE ----------------
 
-async function fetchAppleSubtitle(url: string): Promise<string | undefined> {
+/**
+ * Apple's product page embeds many *other* apps' subtitles — in-app event
+ * promos ("Rep your team…") and "you might also like" recommendations — so any
+ * loose match grabs the wrong string. The app's own subtitle is the one inside
+ * the product object whose `"title"` equals the app name (its `"subtitle"` sits
+ * a few keys later, before the next `}`). If that exact anchor isn't found we
+ * return nothing and warn — never a guessed subtitle from a neighbouring app.
+ */
+function findAppleSubtitle(html: string, appName: string): string | undefined {
+  if (!appName) return undefined;
+  const esc = appName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const m = html.match(new RegExp(`"title":"${esc}"[^}]*?"subtitle":"((?:[^"\\\\]|\\\\.){2,90})"`));
+  return m ? decodeEntities(m[1]).trim() : undefined;
+}
+
+async function fetchAppleSubtitle(url: string, appName: string): Promise<string | undefined> {
   const res = await fetchWithTimeout(url, {}, 8000);
   if (!res.ok) return undefined;
-  const html = await res.text();
-  const m = html.match(/"subtitle"\s*:\s*"([^"]{2,80})"/);
-  return m ? decodeEntities(m[1]).trim() : undefined;
+  return findAppleSubtitle(await res.text(), appName);
 }
 
 async function extractApple(id: string): Promise<Raw> {
@@ -135,7 +170,7 @@ async function extractApple(id: string): Promise<Raw> {
   const icon = String(r.artworkUrl512 || r.artworkUrl100 || "").replace(/\/(\d+)x(\d+)bb\.jpg$/, "/256x256bb.png") || undefined;
   let subtitle: string | undefined;
   try {
-    subtitle = await fetchAppleSubtitle(r.trackViewUrl || `https://apps.apple.com/us/app/id${id}`);
+    subtitle = await fetchAppleSubtitle(r.trackViewUrl || `https://apps.apple.com/us/app/id${id}`, r.trackName || "");
   } catch {
     /* best effort */
   }

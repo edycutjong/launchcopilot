@@ -39,59 +39,42 @@ export default function Landing() {
     <section className="mb-10">
       {/* hero */}
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[.02] px-6 py-12 sm:px-10 sm:py-16">
-        <p className="mb-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-300/80">
+        <p className="rise rise-1 mb-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-300/80">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_12px_#00d4ff]" />
           ASO grader + launch kit · free, no API key to grade
         </p>
-        <h1 className="max-w-[18ch] text-4xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl">
-          Paste your store link.{" "}
-          <span
-            style={{
-              background: "linear-gradient(90deg,#00d4ff,#ff2d95)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Get a graded launch kit.
-          </span>
+        <h1 className="rise rise-2 max-w-[18ch] text-4xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl">
+          Paste your store link. <span className="gradient-text">Get a graded launch kit.</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-base text-violet-100/75 sm:text-lg">
+        <p className="rise rise-3 mt-5 max-w-2xl text-base text-violet-100/75 sm:text-lg">
           LaunchCopilot grades your App Store or Google Play listing against 28 App Store Optimization
           rules, then generates a validated launch kit — store rewrite, Product Hunt, a 7-day social
           calendar, community posts, and press — in about a minute.
         </p>
 
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="rise rise-4 mt-7 flex flex-wrap gap-3">
           {[
             ["28", "ASO rules"],
             ["34 → 93", "AI rewrite, self-validated"],
             ["0", "API keys to grade"],
           ].map(([stat, label]) => (
-            <div key={label} className="rounded-2xl border border-white/10 bg-[#0f0526]/60 px-4 py-2.5">
-              <span
-                className="font-mono text-lg font-bold"
-                style={{
-                  background: "linear-gradient(90deg,#00d4ff,#ff2d95)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-                {stat}
-              </span>
+            <div
+              key={label}
+              className="card-hover rounded-2xl border border-white/10 bg-[#0f0526]/60 px-4 py-2.5"
+            >
+              <span className="gradient-text font-mono text-lg font-bold">{stat}</span>
               <span className="ml-2 text-xs text-violet-200/70">{label}</span>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 font-mono text-xs text-cyan-300/70">↓ Paste a link below to start — or try an example</p>
+        <p className="rise rise-5 mt-8 font-mono text-xs text-cyan-300/70">↓ Paste a link below to start — or try an example</p>
       </div>
 
       {/* how it works */}
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {STEPS.map((s) => (
-          <div key={s.n} className="rounded-2xl border border-white/10 bg-white/[.03] p-5">
+          <div key={s.n} className="card-hover rounded-2xl border border-white/10 bg-white/[.03] p-5">
             <div className="mb-3 flex items-baseline gap-2">
               <span className="font-mono text-2xl font-bold text-cyan-300/90">{s.n}</span>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-pink-400/80">{s.label}</span>
@@ -112,7 +95,7 @@ export default function Landing() {
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {KIT.map((k) => (
-            <div key={k.title} className="flex gap-3 rounded-xl border border-white/8 bg-black/20 p-3">
+            <div key={k.title} className="card-hover flex gap-3 rounded-xl border border-white/8 bg-black/20 p-3">
               <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-cyan-400 to-pink-500" />
               <div>
                 <div className="text-sm font-medium text-white/90">{k.title}</div>

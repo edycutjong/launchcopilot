@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { AppListing, LintReport } from "@/lib/aso-lint";
 import { ALL_RULES } from "@/lib/aso-lint";
 import type { ListingPreview } from "@/lib/extract";
@@ -159,28 +159,21 @@ export default function LaunchCopilot() {
       )}
 
       {phase === "kit" && kit && <KitWorkspace kit={kit} onRestart={() => setPhase("input")} />}
+
+      <Footer />
     </div>
   );
 }
 
 function ThemeToggle() {
-  const [light, setLight] = useState(false);
-  useEffect(() => {
-    let saved = false;
-    try {
-      saved = localStorage.getItem("theme") === "light";
-    } catch {
-      /* ignore */
-    }
-    setLight(saved);
-    document.documentElement.classList.toggle("theme-light", saved);
-  }, []);
+  // CSS-driven: the visible glyph is chosen by `html.theme-light` (see globals.css),
+  // so there's no React state — which sidesteps both a hydration mismatch and the
+  // react-hooks/set-state-in-effect rule. The saved theme is applied pre-paint by a
+  // tiny inline script in layout.tsx.
   const toggle = () => {
-    const next = !light;
-    setLight(next);
-    document.documentElement.classList.toggle("theme-light", next);
+    const isLight = document.documentElement.classList.toggle("theme-light");
     try {
-      localStorage.setItem("theme", next ? "light" : "dark");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     } catch {
       /* ignore */
     }
@@ -188,11 +181,12 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      aria-label={light ? "Switch to dark theme" : "Switch to light theme"}
-      title={light ? "Dark" : "Light"}
-      className="ml-auto grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/12 text-base text-violet-200 transition hover:border-cyan-400/50"
+      aria-label="Toggle light and dark theme"
+      title="Toggle theme"
+      className="ml-auto grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/12 text-base text-violet-200 transition duration-200 hover:-rotate-12 hover:border-cyan-400/50 hover:text-cyan-300"
     >
-      {light ? "☀" : "☾"}
+      <span className="theme-dark-only">☾</span>
+      <span className="theme-light-only">☀</span>
     </button>
   );
 }
@@ -205,16 +199,7 @@ function Header() {
       <div>
         <div className="text-2xl font-bold tracking-tight">
           <span className="text-white">Launch</span>
-          <span
-            style={{
-              background: "linear-gradient(90deg,#00d4ff,#ff2d95)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Copilot
-          </span>
+          <span className="gradient-text">Copilot</span>
         </div>
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cyan-300/80">
           Paste your store listing → graded launch kit
@@ -222,6 +207,70 @@ function Header() {
       </div>
       <ThemeToggle />
     </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="mt-16 border-t border-white/10 pt-9">
+      <div className="grid gap-8 sm:grid-cols-[1.6fr_1fr_1fr]">
+        <div>
+          <div className="mb-2 flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icon.svg" alt="" width={26} height={26} className="rounded-lg" />
+            <span className="text-lg font-bold tracking-tight">
+              <span className="text-white">Launch</span>
+              <span className="gradient-text">Copilot</span>
+            </span>
+          </div>
+          <p className="max-w-xs text-sm leading-relaxed text-violet-200/70">
+            Paste your app&apos;s store link → a graded ASO report and a validated launch kit.
+            Built for <b className="text-violet-100/85">HackOnVibe</b> 2026.
+          </p>
+        </div>
+        <div>
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70">Product</div>
+          <ul className="space-y-2 text-sm text-violet-200/80">
+            <li>
+              <a href="#" className="transition hover:text-cyan-300">Grade a listing</a>
+            </li>
+            <li>
+              <a href="/pitch" className="transition hover:text-cyan-300">Pitch deck</a>
+            </li>
+            <li>
+              <a href="/api/analyze" className="transition hover:text-cyan-300">Free grading API</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70">Source</div>
+          <ul className="space-y-2 text-sm text-violet-200/80">
+            <li>
+              <a
+                href="https://github.com/edycutjong/launchcopilot"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-cyan-300"
+              >
+                GitHub <span className="lnk-arrow">↗</span>
+              </a>
+            </li>
+            <li className="text-violet-300/70">
+              CLI · <span className="font-mono text-violet-200/80">npx aso-lint</span>
+            </li>
+            <li>
+              <a href="https://launchcopilot.edycu.dev" className="transition hover:text-cyan-300">
+                launchcopilot.edycu.dev
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-col gap-2 border-t border-white/8 pt-5 pb-2 text-[11px] text-violet-300/60 sm:flex-row sm:items-center sm:justify-between">
+        <span>© 2026 LaunchCopilot · MIT License · made by Edy</span>
+        <span>App names, icons &amp; screenshots belong to their respective developers — shown for demonstration only.</span>
+      </div>
+    </footer>
   );
 }
 

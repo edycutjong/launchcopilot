@@ -125,6 +125,6 @@ npm run release:dry # preview the next semantic version locally
 
 ## ⚠️ Honest limitations
 
-No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best practices, not Apple's private ranking algorithm · English-only v1 · paste-a-link extraction is best-effort (Apple blocks subtitle reads from datacenter IPs — flagged, never guessed).
+No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best practices, not Apple's private ranking algorithm · English-only v1 · paste-a-link extraction is best-effort — the App Store subtitle is anchored to the app's own listing object (never a neighbouring app's), and anything it can't confidently read is flagged, never guessed.
 
-<sub>Design assets (synthwave theme) live in <code>docs/assets/</code>. Thank you for reviewing LaunchCopilot. — Edy</sub>
+<sub>Thank you for reviewing LaunchCopilot. — Edy</sub>
