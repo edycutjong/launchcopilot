@@ -29,6 +29,21 @@
 
 ---
 
+## 🏁 HackOnVibe Submission — Demo Video & Questionnaire
+
+**🎬 Demo video — customer journey (~2 min):** **https://youtu.be/2if0sEFKe8c**
+*What the user clicks → what they get: paste a store link → auto-fill → a deterministic 27/100 grade → generate a launch kit that re-grades itself to ≥ 90.*
+
+**Questionnaire**
+
+1. **What does the service do?** — LaunchCopilot grades a mobile app's store listing against **28 deterministic App Store Optimization rules** (0–100, per-field findings + exact fixes, no AI), then generates a **validated launch kit** — A/B store rewrites, a Product Hunt draft, a 7-day social calendar, community posts, and press — where every rewrite is **re-graded by the same engine and regenerated until it scores ≥ 90.**
+2. **Target audience** — Solo & indie mobile-app developers and small studios launching a new app, who can't afford a $2–5k ASO/marketing agency.
+3. **Expected buyer countries** — Global, English-first (v1). Primary markets: **United States, United Kingdom, Canada, Australia**, plus large indie-dev hubs (**India, Germany/EU, Southeast Asia**).
+4. **Competitors** — ASO analytics suites (AppTweak, Sensor Tower, AppFollow, MobileAction) that *report* but don't rewrite; app-launch agencies (costly, slow); and generic AI copywriters (ChatGPT/Jasper) with no store rules and no validation.
+5. **Our advantage** — One **deterministic 28-rule engine grades both the human and the AI**: the AI's rewrite must clear the same ≥ 90 bar or it regenerates, so the output is provably store-legal, not "AI slop." It's **end-to-end** (grade → full launch kit, not just analytics), **free with no API key to grade**, and **100% reproducible** in the browser.
+
+---
+
 ## 📸 See it in Action
 
 <div align="center">
