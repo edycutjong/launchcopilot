@@ -144,7 +144,7 @@ export default function LaunchCopilot() {
             <div className="mt-6 flex justify-center gap-3">
               <button
                 onClick={generate}
-                className="rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-[#04121a] shadow-[0_0_24px_#00d4ff66] transition hover:bg-cyan-300"
+                className="btn-micro rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-[#04121a] shadow-[0_0_24px_#00d4ff66] transition hover:bg-cyan-300"
               >
                 Generate my launch kit →
               </button>
@@ -429,7 +429,7 @@ function InputForm({
           <button
             onClick={() => autofill()}
             disabled={pulling}
-            className="rounded-full bg-cyan-400 px-5 py-2 text-sm font-semibold text-[#04121a] transition enabled:hover:bg-cyan-300 disabled:opacity-50"
+            className="btn-micro rounded-full bg-cyan-400 px-5 py-2 text-sm font-semibold text-[#04121a] transition enabled:hover:bg-cyan-300 disabled:opacity-50"
           >
             {pulling ? "Pulling…" : "Auto-fill"}
           </button>
@@ -545,7 +545,7 @@ function InputForm({
         <button
           disabled={!ready || busy || overLimit}
           onClick={onGrade}
-          className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0d0221] transition enabled:hover:bg-white/85 disabled:opacity-40"
+          className="btn-micro rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0d0221] transition enabled:hover:bg-white/85 disabled:opacity-40"
         >
           {busy ? "Grading…" : "Grade my listing"}
         </button>

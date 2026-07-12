@@ -52,6 +52,7 @@ function HeroGradeCard() {
           <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
             <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="10" />
             <circle
+              className="gauge-draw"
               cx="60"
               cy="60"
               r="52"
@@ -71,20 +72,23 @@ function HeroGradeCard() {
           </svg>
           <div className="absolute inset-0 grid place-items-center text-center">
             <div>
-              <div className="text-3xl font-bold leading-none text-white">93</div>
+              <div className="pop-in text-3xl font-bold leading-none text-white">93</div>
               <div className="gradient-text mt-1 font-mono text-[11px] font-bold tracking-wide">GRADE A</div>
             </div>
           </div>
         </div>
         <div className="min-w-0 flex-1 space-y-2.5">
-          {bars.map(([label, pct, color]) => (
+          {bars.map(([label, pct, color], i) => (
             <div key={label}>
               <div className="mb-1 flex justify-between font-mono text-[10px] text-violet-200/70">
                 <span>{label}</span>
                 <span>{pct}</span>
               </div>
               <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
+                <div
+                  className="bar-grow h-full rounded-full"
+                  style={{ width: `${pct}%`, background: color, animationDelay: `${0.55 + i * 0.12}s` }}
+                />
               </div>
             </div>
           ))}
@@ -139,7 +143,7 @@ export default function Landing() {
             <div className="rise rise-5 mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#grade-panel"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0d0221] transition hover:bg-white/85"
+                className="btn-micro inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0d0221] transition hover:bg-white/85"
               >
                 Grade my app <span aria-hidden>↓</span>
               </a>
@@ -156,8 +160,12 @@ export default function Landing() {
 
       {/* how it works */}
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {STEPS.map((s) => (
-          <div key={s.n} className="card-hover rounded-2xl border border-white/10 bg-white/[.03] p-5">
+        {STEPS.map((s, i) => (
+          <div
+            key={s.n}
+            className="card-hover rise rounded-2xl border border-white/10 bg-white/[.03] p-5"
+            style={{ animationDelay: `${0.15 + i * 0.1}s` }}
+          >
             <div className="mb-3 flex items-baseline gap-2">
               <span className="font-mono text-2xl font-bold text-cyan-300/90">{s.n}</span>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-pink-400/80">{s.label}</span>
@@ -177,8 +185,12 @@ export default function Landing() {
           </span>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {KIT.map((k) => (
-            <div key={k.title} className="card-hover flex gap-3 rounded-xl border border-white/8 bg-black/20 p-3">
+          {KIT.map((k, i) => (
+            <div
+              key={k.title}
+              className="card-hover rise flex gap-3 rounded-xl border border-white/8 bg-black/20 p-3"
+              style={{ animationDelay: `${0.1 + i * 0.07}s` }}
+            >
               <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-cyan-400 to-pink-500" />
               <div>
                 <div className="text-sm font-medium text-white/90">{k.title}</div>

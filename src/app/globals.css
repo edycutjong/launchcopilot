@@ -161,10 +161,34 @@ a:hover > .lnk-arrow { transform: translate(3px, -3px); }
 @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.5); } 50% { box-shadow: 0 0 16px 2px rgba(0, 212, 255, 0.55); } }
 .glow-pulse { animation: glow-pulse 2.6s ease-in-out infinite; }
 
+/* primary-button micro-interaction: lift on hover, press on click, light sheen sweep */
+.btn-micro { position: relative; overflow: hidden; transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.16s, filter 0.16s; }
+.btn-micro:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.btn-micro:active { transform: translateY(0) scale(0.96); }
+.btn-micro::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(110deg, transparent 32%, rgba(255, 255, 255, 0.5) 50%, transparent 68%);
+  transform: translateX(-130%); transition: transform 0.6s ease;
+}
+.btn-micro:hover::before { transform: translateX(130%); }
+
+/* hero score card — first-load reveal: ring draws, bars grow, score pops in */
+@keyframes gauge-draw { from { stroke-dashoffset: 326.7; } }
+.gauge-draw { animation: gauge-draw 1.15s cubic-bezier(0.4, 0, 0.2, 1) 0.35s both; }
+@keyframes bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.bar-grow { transform-origin: left; animation: bar-grow 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.55); } to { opacity: 1; transform: none; } }
+.pop-in { animation: pop-in 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) 1.15s both; }
+
 @media (prefers-reduced-motion: reduce) {
   .gradient-text,
-  .glow-pulse { animation: none; }
+  .glow-pulse,
+  .gauge-draw,
+  .bar-grow,
+  .pop-in { animation: none; }
   .rise { opacity: 1; animation: none; }
+  .btn-micro { transition: none; }
+  .btn-micro::before { display: none; }
   .card-hover,
   .lnk-arrow { transition: none; }
 }
