@@ -17,13 +17,14 @@ const description =
   "Paste your newly launched mobile app's store listing and get a graded ASO report (28 deterministic rules) plus a complete, validated AI launch kit in about a minute.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://launchcopilot.edycu.dev"),
   title,
   description,
   icons: { icon: "/icon.svg" },
   openGraph: {
     title,
     description,
-    url: "https://launchcopilot-two.vercel.app",
+    url: "https://launchcopilot.edycu.dev",
     siteName: "LaunchCopilot",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "LaunchCopilot" }],
     locale: "en_US",

@@ -1,11 +1,14 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { AppListing, LintReport } from "@/lib/aso-lint";
+import { ALL_RULES } from "@/lib/aso-lint";
+import type { ListingPreview } from "@/lib/extract";
 import type { Kit, KitEvent } from "@/lib/pipeline";
 import type { Panel } from "@/lib/pipeline/schemas";
 import { FIXTURE_META, FIXTURES } from "@/lib/fixtures";
 import { ScoreDial } from "./ScoreDial";
+import Landing from "./Landing";
 
 type Phase = "input" | "graded" | "generating" | "kit";
 const EMPTY: AppListing = {
@@ -49,6 +52,7 @@ export default function LaunchCopilot() {
   const [kit, setKit] = useState<Kit | null>(null);
 
   const set = (k: keyof AppListing, v: string) => setListing((l) => ({ ...l, [k]: v }));
+  const fill = (patch: Partial<AppListing>) => setListing((l) => ({ ...l, ...patch }));
 
   const loadExample = (id: string) => {
     setListing(FIXTURES[id]);
@@ -127,7 +131,10 @@ export default function LaunchCopilot() {
       )}
 
       {phase === "input" && (
-        <InputForm listing={listing} set={set} onGrade={grade} busy={busy} onExample={loadExample} />
+        <>
+          <Landing />
+          <InputForm listing={listing} set={set} onGrade={grade} busy={busy} onExample={loadExample} onAutofill={fill} />
+        </>
       )}
 
       {(phase === "graded" || phase === "generating") && report && (
@@ -156,6 +163,40 @@ export default function LaunchCopilot() {
   );
 }
 
+function ThemeToggle() {
+  const [light, setLight] = useState(false);
+  useEffect(() => {
+    let saved = false;
+    try {
+      saved = localStorage.getItem("theme") === "light";
+    } catch {
+      /* ignore */
+    }
+    setLight(saved);
+    document.documentElement.classList.toggle("theme-light", saved);
+  }, []);
+  const toggle = () => {
+    const next = !light;
+    setLight(next);
+    document.documentElement.classList.toggle("theme-light", next);
+    try {
+      localStorage.setItem("theme", next ? "light" : "dark");
+    } catch {
+      /* ignore */
+    }
+  };
+  return (
+    <button
+      onClick={toggle}
+      aria-label={light ? "Switch to dark theme" : "Switch to light theme"}
+      title={light ? "Dark" : "Light"}
+      className="ml-auto grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/12 text-base text-violet-200 transition hover:border-cyan-400/50"
+    >
+      {light ? "☀" : "☾"}
+    </button>
+  );
+}
+
 function Header() {
   return (
     <header className="mb-8 flex items-center gap-3">
@@ -179,6 +220,7 @@ function Header() {
           Paste your store listing → graded launch kit
         </p>
       </div>
+      <ThemeToggle />
     </header>
   );
 }
@@ -235,20 +277,119 @@ function InputForm({
   onGrade,
   busy,
   onExample,
+  onAutofill,
 }: {
   listing: AppListing;
   set: (k: keyof AppListing, v: string) => void;
   onGrade: () => void;
   busy: boolean;
   onExample: (id: string) => void;
+  onAutofill: (patch: Partial<AppListing>) => void;
 }) {
   const ios = listing.platform !== "android";
   const android = listing.platform !== "ios";
   const ready = listing.appName && listing.title && listing.description && listing.whatItDoes && listing.category;
+
+  const [url, setUrl] = useState("");
+  const [pulling, setPulling] = useState(false);
+  const [pullMsg, setPullMsg] = useState<string | null>(null);
+  const [pullWarn, setPullWarn] = useState<string[]>([]);
+  const [pullErr, setPullErr] = useState<string | null>(null);
+  const [preview, setPreview] = useState<ListingPreview | null>(null);
+
+  const autofill = async () => {
+    const link = url.trim();
+    if (!link) {
+      setPullErr("Paste an App Store or Google Play link.");
+      return;
+    }
+    setPulling(true);
+    setPullErr(null);
+    setPullMsg(null);
+    setPullWarn([]);
+    setPreview(null);
+    try {
+      const res = await fetch("/api/extract", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ url: link }),
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        setPullErr(json.error ?? "Couldn’t extract that listing.");
+        return;
+      }
+      onAutofill(json.patch);
+      setPullMsg(json.summary ?? "Filled from the store listing.");
+      setPullWarn(json.warnings ?? []);
+      setPreview(json.preview ?? null);
+    } catch {
+      setPullErr("Network error — please try again.");
+    } finally {
+      setPulling(false);
+    }
+  };
+
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[.03] p-5 sm:p-7">
+      <div className="mb-5 rounded-xl border border-cyan-400/25 bg-cyan-400/[.05] p-4">
+        <div className="mb-2 flex items-center gap-2 text-xs font-medium text-cyan-200">
+          <span className="grid h-4 w-4 place-items-center rounded-full bg-cyan-400 text-[10px] font-bold text-black">↓</span>
+          Paste a live App Store or Google Play link — we’ll fill the fields for you
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                if (!pulling) autofill();
+              }
+            }}
+            placeholder="https://apps.apple.com/…   or   play.google.com/store/apps/…"
+            className="min-w-0 flex-1 rounded-lg border border-white/10 bg-[#0f0526] px-3 py-2 font-mono text-xs text-white outline-none focus:border-cyan-400/60"
+          />
+          <button
+            onClick={autofill}
+            disabled={pulling}
+            className="rounded-full bg-cyan-400 px-5 py-2 text-sm font-semibold text-[#04121a] transition enabled:hover:bg-cyan-300 disabled:opacity-50"
+          >
+            {pulling ? "Pulling…" : "Auto-fill"}
+          </button>
+        </div>
+        {pullErr && <div className="mt-2 text-xs text-pink-300">{pullErr}</div>}
+        {pullMsg && <div className="mt-2 text-xs text-cyan-200">{pullMsg}</div>}
+        {pullWarn.length > 0 && <div className="mt-1 text-[11px] text-amber-300/80">{pullWarn.join(" ")}</div>}
+        {preview && (
+          <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-black/25 p-3">
+            {preview.icon && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={preview.icon} alt="" width={48} height={48} className="h-12 w-12 rounded-xl border border-white/10" />
+            )}
+            <div className="min-w-0">
+              <div className="truncate text-sm font-medium text-white">{preview.name}</div>
+              <div className="font-mono text-[11px] text-violet-300/70">
+                {preview.storeLabel}
+                {preview.rating != null ? ` · ${preview.rating.toFixed(1)}★` : ""}
+                {preview.installs ? ` · ${preview.installs}` : preview.ratingCount ? ` · ${preview.ratingCount.toLocaleString()}` : ""}
+                {preview.category ? ` · ${preview.category}` : ""}
+              </div>
+            </div>
+            {preview.screenshots.length > 0 && (
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {preview.screenshots.map((s, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={i} src={s} alt="" className="h-20 w-auto shrink-0 rounded-md border border-white/10" />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       <div className="mb-5 flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-xs text-violet-300/70">Try an example:</span>
+        <span className="mr-1 text-xs text-violet-300/70">…or try an example:</span>
         {FIXTURE_META.map((f) => (
           <button
             key={f.id}
@@ -315,6 +456,64 @@ function InputForm({
   );
 }
 
+const FIELD_LABEL: Record<string, string> = {
+  appName: "App name",
+  title: "Title",
+  subtitle: "Subtitle",
+  keywords: "Keywords",
+  shortDescription: "Short description",
+  description: "Description",
+  screenshots: "Screenshots",
+  metadata: "Metadata",
+  video: "Preview video",
+  whatItDoes: "What it does",
+};
+
+/** Per-field score derived from the real rule weights: 1 − (field penalties / field max). */
+function fieldScores(report: LintReport, platform: AppListing["platform"]) {
+  const applic = (r: (typeof ALL_RULES)[number]) => r.store === "both" || platform === "both" || platform === r.store;
+  const max: Record<string, number> = {};
+  const lost: Record<string, number> = {};
+  for (const r of ALL_RULES) if (applic(r)) max[r.field] = (max[r.field] ?? 0) + r.weight;
+  for (const f of report.findings) lost[f.field] = (lost[f.field] ?? 0) + f.weight;
+  return Object.keys(max)
+    .map((field) => {
+      const m = max[field];
+      const l = Math.min(lost[field] ?? 0, m);
+      return { field, pct: m > 0 ? Math.round((1 - l / m) * 100) : 100 };
+    })
+    .sort((a, b) => a.pct - b.pct);
+}
+
+function CriteriaBars({ report, platform }: { report: LintReport; platform: AppListing["platform"] }) {
+  const rows = fieldScores(report, platform);
+  if (rows.length === 0) return null;
+  const color = (p: number) => (p >= 80 ? "#00d4ff" : p >= 50 ? "#ff6b35" : "#ff2d95");
+  return (
+    <div className="mt-6 rounded-xl border border-white/8 bg-black/20 p-4">
+      <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-cyan-300/80">Score by field</div>
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        {rows.map((r) => (
+          <div key={r.field}>
+            <div className="mb-1 flex items-baseline justify-between text-[12px]">
+              <span className="text-violet-100/85">{FIELD_LABEL[r.field] ?? r.field}</span>
+              <span className="font-mono" style={{ color: color(r.pct) }}>
+                {r.pct}
+              </span>
+            </div>
+            <div className="h-2 overflow-hidden rounded-full bg-[#241147]">
+              <div
+                className="h-full rounded-full transition-[width] duration-500"
+                style={{ width: `${r.pct}%`, background: color(r.pct) }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function GradeReveal({ report, listing }: { report: LintReport; listing: AppListing }) {
   const byField = useMemo(() => {
     const m = new Map<string, typeof report.findings>();
@@ -365,6 +564,8 @@ function GradeReveal({ report, listing }: { report: LintReport; listing: AppList
           )}
         </div>
       </div>
+
+      <CriteriaBars report={report} platform={listing.platform} />
 
       <div className="mt-5 space-y-3">
         {byField.map(([field, items]) => (

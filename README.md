@@ -3,69 +3,90 @@
 </p>
 
 <p align="center">
+  <a href="https://launchcopilot.edycu.dev"><img alt="Live Demo" src="https://img.shields.io/badge/%E2%96%B6_Live_Demo-06b6d4?style=for-the-badge&labelColor=0d0221"></a>
+  <!-- REPLACE the href below with your YouTube demo link before submitting -->
+  <a href="https://youtu.be/REPLACE_ME"><img alt="Pitch Video" src="https://img.shields.io/badge/%F0%9F%8E%AC_Pitch_Video-ef4444?style=for-the-badge&labelColor=0d0221"></a>
+  <a href="https://launchcopilot.edycu.dev/pitch"><img alt="Pitch Deck" src="https://img.shields.io/badge/%F0%9F%93%8A_Pitch_Deck-f59e0b?style=for-the-badge&labelColor=0d0221"></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml/badge.svg"></a>
-  <img alt="tests" src="https://img.shields.io/badge/tests-145%20passing-00d4ff?style=flat-square&labelColor=0d0221">
+  <img alt="tests" src="https://img.shields.io/badge/tests-150%20passing-00d4ff?style=flat-square&labelColor=0d0221">
   <img alt="engine" src="https://img.shields.io/badge/ASO%20engine-28%20rules-ff2d95?style=flat-square&labelColor=0d0221">
-  <img alt="stack" src="https://img.shields.io/badge/Next.js-Claude-8b00ff?style=flat-square&labelColor=0d0221">
-  <img alt="semantic-release" src="https://img.shields.io/badge/release-semantic-e10079?style=flat-square&logo=semantic-release&labelColor=0d0221">
+  <img alt="stack" src="https://img.shields.io/badge/Next.js%2016-Claude-8b00ff?style=flat-square&labelColor=0d0221">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-00ffd1?style=flat-square&labelColor=0d0221">
 </p>
 
-> **Your app launched. Now make it found.** Paste your newly launched mobile app's store
-> listing → get a graded ASO report (28 deterministic rules) and a complete, validated
-> launch kit: rewritten store copy, a Product Hunt draft, a 7-day social calendar,
-> community-matched posts, and press blurbs — in about a minute.
+<p align="center"><b>Paste your app's store link. Get a graded, validated launch kit — in about a minute.</b></p>
 
-*Built for HackOnVibe (July 2026) — theme: **effective promotion of a newly launched mobile app.***
+<p align="center"><sub>Built for <b>HackOnVibe</b> (July 2026) · theme: <b>effective promotion of a newly launched mobile app</b></sub></p>
 
 ---
 
-### 🛠️ Technical implementation
-One flow — **Paste → Grade → Kit.** A deterministic **28-rule ASO lint engine** (pure
-TypeScript, sub-millisecond, **130 unit tests** in CI) scores the pasted listing 0–100 with
-per-field findings and fixes. A Claude pipeline then generates the launch kit and re-validates
-its own ASO rewrite against the same engine. Ships with a free public API
-(`POST /api/analyze`) and a CLI (`npm run aso-lint -- <listing.json>`).
+## 📸 See it in Action
 
-### 🤖 AI functionality
-Claude Opus synthesizes an app profile and writes channel-native copy for five surfaces at
-once; the model's rewritten listing is **re-linted and auto-repaired until it scores ≥ 90** —
-the AI is graded by the same deterministic judge as the human. A second model (Claude Haiku)
-runs a **persona panel** that critiques every artifact in-character and regenerates the weak
-ones. The keyword field is **machine-packed** from ranked candidates, so it's provably free
-of duplicates, stop-words, and overflow.
+| 1 · Paste a link → auto-fill | 2 · Grade (28 rules) | 3 · Landing → live tool |
+|---|---|---|
+| ![Auto-fill from a store link](docs/shot-autofill.png) | ![ASO scorecard with per-field scores](docs/shot-grade.png) | ![Landing page](docs/shot-landing.png) |
+| Paste an App Store / Google Play URL → the real icon, rating, screenshots, and every field fill in. | Deterministic score with per-field bars + exact fixes (light/dark). | A pitch that flows straight into the working grader. |
 
-### 👤 Problem & users
-Solo indie developers ship good apps and get six downloads — not because the app is bad, but
-because launch marketing (ASO budgets, Product Hunt mechanics, per-community rules) is a
-specialist skill they can't buy at $2–5k. It **recurs**: every app update is a re-launch.
-LaunchCopilot is the recurring companion for that loop.
+> ▶ **Try it yourself, no signup, no key:** [launchcopilot.edycu.dev](https://launchcopilot.edycu.dev) — paste **your** app's link and watch it grade.
 
-### 💰 Business model
-Free (3 kits/day, ~$0.40 COGS each) · Pro $12/mo (unlimited + relaunch campaigns) · Studio
-$39/mo (agencies). Cheaper than ASO analytics suites, which report numbers but write nothing;
-safer than raw ChatGPT, which silently breaks store rules.
+## 💡 The Problem & Solution
 
-### 🚀 Go-to-market
-Launch on Product Hunt, r/SideProject and Indie Hackers — the exact channels the tool's own
-community matcher recommends — plus a shareable "27 → 93" scorecard as an organic loop.
+Solo developers ship good apps and get **six downloads — four of them friends.** Not because the app is bad, but because its store listing quietly breaks App Store Optimization rules they've never heard of, and launch marketing (ASO, Product Hunt mechanics, per-community etiquette) is a specialist skill they can't buy at $2–5k an agency.
 
-### 🎬 Presentation
-Live demo + 5-minute video *(links added at submission)*. Try the engine locally with no API
-key.
+**LaunchCopilot performs the launch, not advice about it.** Paste your listing → it grades your ASO against 28 deterministic rules, then generates a validated launch kit that's **provably store-legal — because the same engine that grades you also grades the AI.**
 
----
+**Key Features**
+- 🔗 **Paste-a-link auto-fill** — drop an App Store / Google Play URL and the whole listing (title, subtitle, description, screenshots, rating) is pulled in for you. *(No AI — official iTunes API + Play scrape.)*
+- 📊 **28-rule ASO engine** — deterministic, sub-millisecond, scores 0–100 with per-field findings and exact fixes. Pure encoded store rules, no model.
+- ♻️ **Validator-in-the-loop** — the AI's rewritten listing is re-linted and **auto-repaired until it scores ≥ 90**; the model is held to the same bar as the human.
+- 🎭 **Persona-panel QA** — a focus group synthesized from your own listing critiques every artifact in-character; weak ones regenerate before you see them.
+- 🆓 **Free API + CLI, no key to grade** — `POST /api/analyze` · `npm run aso-lint` · runs fully in `DEMO_MODE`.
 
-## Run it
+## 🏗️ Architecture & Tech Stack
+
+**Next.js 16 + React 19 + Tailwind v4** (one codebase, app + API) · **Claude** (`claude-opus-4-8` writers + `claude-haiku-4-5` persona panel) · **Zod** schema-constrained generation · **Vitest / Playwright / semantic-release** for the harness.
+
+```mermaid
+flowchart LR
+  A["🔗 Paste store link"] --> B["Extract listing<br/>iTunes API · Play scrape"]
+  B --> C["28-rule ASO lint<br/><i>deterministic · sub-ms · no AI</i>"]
+  C --> D["Score 0–100<br/>+ per-field fixes"]
+  D --> E["Claude Opus<br/>5 parallel writers"]
+  E --> F{"Re-lint the rewrite<br/>score ≥ 90?"}
+  F -- "no · inject findings" --> E
+  F -- "yes" --> G["Claude Haiku<br/>persona-panel QA"]
+  G --> H["🚀 Launch kit<br/>store · PH · social · community · press"]
+```
+
+**Where the interesting code lives** (for judges skimming the source):
+
+| Capability | File |
+|---|---|
+| 28-rule ASO engine (the deterministic judge) | [`src/lib/aso-lint/rules.ts`](src/lib/aso-lint/rules.ts) |
+| Paste-a-link extraction + `/api/extract` | [`src/lib/extract/index.ts`](src/lib/extract/index.ts) · [`src/app/api/extract/route.ts`](src/app/api/extract/route.ts) |
+| Validator-in-the-loop kit pipeline | [`src/lib/pipeline/`](src/lib/pipeline/) |
+| Free grading API (no key) | [`src/app/api/analyze/route.ts`](src/app/api/analyze/route.ts) |
+| Self-contained pitch deck (served at `/pitch`) | [`public/pitch/index.html`](public/pitch/index.html) |
+
+## 🎯 HackOnVibe theme fit
+
+The theme is **effective promotion of a newly launched mobile app** — LaunchCopilot is that, end to end: it grades the listing (promotion surface #1), rewrites it to pass, and produces the Product Hunt / social / community / press assets that *are* the launch. And it **recurs** — every app update is a re-launch, so Re-grade + Content-Refill regenerate next week's kit in a click.
+
+## 🚀 Run it Locally (For Judges)
 
 ```bash
 npm install
-npm test                                              # 130 unit tests
+npm test                                              # 150 unit tests
 npm run aso-lint -- data/fixtures/pocketplants.json   # CLI: 27/100 (F) + fixes
-npm run dev                                           # app at http://localhost:3000
+npm run dev                                            # app at http://localhost:3000
 ```
 
-**API** — grade any listing, no key required:
+> **Note for judges — you can skip the API key.** Grading, the CLI, and the E2E suite all run with **no credentials** (`DEMO_MODE`). A key (`ANTHROPIC_API_KEY` in `.env.local`) is only needed to generate the AI launch kit; the deterministic grader never needs one.
+
+**Grade any listing over HTTP — no key required:**
 ```bash
 curl -X POST http://localhost:3000/api/analyze \
   -H 'content-type: application/json' -d @data/fixtures/pocketplants.json
@@ -73,11 +94,7 @@ curl -X POST http://localhost:3000/api/analyze \
 
 ## 🧪 Testing & engineering harness
 
-A **6-stage CI/CD pipeline** runs on every push (Quality → Security → Build → E2E →
-Performance → Deploy gate). When it goes green on `main`, a separate **Release** workflow
-runs [semantic-release](https://semantic-release.gitbook.io): it reads the conventional
-commits, computes the next version, updates the changelog, and publishes a tagged GitHub
-Release automatically.
+A **6-stage CI/CD pipeline** runs on every push (Quality → Security → Build → E2E → Performance → Deploy gate). When it goes green on `main`, a separate **Release** workflow runs [semantic-release](https://semantic-release.gitbook.io): it reads the conventional commits, computes the next version, updates the changelog, and publishes a tagged GitHub Release automatically.
 
 ```bash
 npm run ci          # lint + typecheck + tests with coverage (the quality gate)
@@ -97,27 +114,17 @@ npm run release:dry # preview the next semantic version locally
 | Releases | semantic-release (conventional commits → semver, auto GitHub Release) | ✅ |
 | Community profile | CoC · Contributing · Security · issue/PR templates | ✅ 100% |
 
-**Benchmark** (`npm run bench`, 5,000 runs over 3 fixtures): the lint engine runs at
-**p50 0.39 ms · p95 0.86 ms · ~2,180 listings/sec** — fast enough to be the AI's inline
-validator on every repair attempt.
+**Benchmark** (`npm run bench`, 5,000 runs over 3 fixtures): the lint engine runs at **p50 0.39 ms · p95 0.86 ms · ~2,180 listings/sec** — fast enough to be the AI's inline validator on every repair attempt.
 
-## Build notes — a few bugs worth remembering
+## 🐛 Build notes — a few bugs worth remembering
 
-- **The SVG logo was pinned to (0,0).** In the animated README hero, a CSS `transform` (the
-  bob animation) silently *overrode* the element's `transform="translate()"` attribute — so
-  the icon ignored every position I set. Fix: split positioning (outer group, attribute) from
-  animation (inner group, CSS).
-- **A stopword leak flipped a rule.** The "what does your app do" text was matched against the
-  description without filtering stopwords, so "the/for/your" counted as real content — caught
-  only because a test expected a finding that didn't fire.
-- **The social-proof regex missed real phrasing.** "Rated 4.8 by 3,200 users" didn't match the
-  first pattern; a fixture pinned the expected score and surfaced it.
-- **TypeScript 7 (the native compiler) breaks the toolchain.** `tsc` itself passes, but
-  `typescript-eslint` and Next's build fail on its changed API — so the Dependabot bump is
-  held via an ignore rule, not merged.
+- **The SVG logo was pinned to (0,0).** In the animated README hero, a CSS `transform` (the bob animation) silently *overrode* the element's `transform="translate()"` attribute — so the icon ignored every position I set. Fix: split positioning (outer group, attribute) from animation (inner group, CSS).
+- **A stopword leak flipped a rule.** The "what does your app do" text was matched against the description without filtering stopwords, so "the/for/your" counted as real content — caught only because a test expected a finding that didn't fire.
+- **Google Play embeds rival apps' copy.** The paste-a-link extractor first grabbed the *longest* description on the page — which was a competitor's. Fixed by matching the description to the target app via distinctive name/tagline tokens.
+- **The social-proof regex missed real phrasing.** "Rated 4.8 by 3,200 users" didn't match the first pattern; a fixture pinned the expected score and surfaced it.
 
-## Honest limitations
-No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best
-practices, not Apple's private ranking algorithm · English-only v1.
+## ⚠️ Honest limitations
 
-<sub>Design assets (synthwave theme) live in <code>docs/assets/</code> — run <code>npm run preview</code> there for the sanity check. Thank you for reviewing LaunchCopilot. — Edy</sub>
+No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best practices, not Apple's private ranking algorithm · English-only v1 · paste-a-link extraction is best-effort (Apple blocks subtitle reads from datacenter IPs — flagged, never guessed).
+
+<sub>Design assets (synthwave theme) live in <code>docs/assets/</code>. Thank you for reviewing LaunchCopilot. — Edy</sub>
