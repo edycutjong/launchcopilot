@@ -10,11 +10,9 @@
 
   <br/>
 
-<!-- ⚠️ Before submitting: replace youtu.be/REPLACE_ME below with the real YouTube demo link -->
-
 [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-06b6d4?style=for-the-badge)](https://launchcopilot.edycu.dev)
 [![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://launchcopilot.edycu.dev/pitch)
-[![Demo Video](https://img.shields.io/badge/🎬_Demo-Video-ef4444?style=for-the-badge)](https://youtu.be/REPLACE_ME)
+[![Demo Video](https://img.shields.io/badge/🎬_Demo-Video-ef4444?style=for-the-badge)](https://youtu.be/2if0sEFKe8c)
 [![Built for HackOnVibe](https://img.shields.io/badge/HackOnVibe-Promote_a_New_App-8b5cf6?style=for-the-badge)](https://hackonvibe.com)
 
   <br/>
@@ -32,6 +30,14 @@
 ---
 
 ## 📸 See it in Action
+
+<div align="center">
+
+![LaunchCopilot walkthrough — paste a store link, auto-fill, a deterministic 27/100 grade, then a launch kit whose rewrites self-validate to 91](docs/demo.gif)
+
+<sub><em>~15s, no audio — paste a store link → auto-fill → the deterministic 27/100 grade → a generated launch kit that re-grades itself to ≥ 90.</em></sub>
+
+</div>
 
 | 1 · Paste a link → auto-fill | 2 · Grade (28 rules) | 3 · Landing → live tool |
 |---|---|---|
