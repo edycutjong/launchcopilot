@@ -14,11 +14,25 @@ const UA =
 export class ExtractError extends Error {}
 
 /**
- * SSRF allow-list. This service only ever reaches these three fixed app-store
- * hosts; {@link fetchWithTimeout} parses every outbound URL and refuses any host
- * that isn't in this set (CWE-918 / CodeQL `js/request-forgery`).
+ * SSRF allow-list (CWE-918 / CodeQL `js/request-forgery`). Defence in depth:
+ * every URL we fetch is built from a *literal* host plus a sanitized numeric /
+ * package id — a hostile host can never be assembled — and {@link assertAllowedUrl}
+ * re-validates the host of every outbound request before it leaves.
  */
-const ALLOWED_HOSTS = new Set(["itunes.apple.com", "apps.apple.com", "play.google.com"]);
+const ALLOWED_HOSTS = ["itunes.apple.com", "apps.apple.com", "play.google.com"];
+
+export function assertAllowedUrl(url: string): URL {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new ExtractError("Invalid store URL.");
+  }
+  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.includes(parsed.hostname)) {
+    throw new ExtractError("Only App Store and Google Play links can be fetched.");
+  }
+  return parsed;
+}
 
 export interface ListingPreview {
   storeLabel: string;
@@ -56,22 +70,11 @@ interface Raw {
 }
 
 async function fetchWithTimeout(url: string, ms = 12000) {
-  // SSRF barrier: parse the URL, reject any non-allow-listed host, and hand the
-  // *validated* URL object (not the raw string) to fetch, so the check provably
-  // guards the request. (CWE-918 / CodeQL js/request-forgery.)
-  let parsed: URL;
-  try {
-    parsed = new URL(url);
-  } catch {
-    throw new ExtractError("Invalid store URL.");
-  }
-  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.has(parsed.hostname.toLowerCase())) {
-    throw new ExtractError("Only App Store and Google Play links can be fetched.");
-  }
+  const target = assertAllowedUrl(url);
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
-    return await fetch(parsed, {
+    return await fetch(target, {
       signal: ctrl.signal,
       cache: "no-store",
       headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" },
@@ -164,7 +167,8 @@ async function fetchAppleSubtitle(url: string, appName: string): Promise<string 
 
 async function extractApple(id: string): Promise<Raw> {
   const warnings: string[] = [];
-  const res = await fetchWithTimeout(`https://itunes.apple.com/lookup?id=${id}&country=us`);
+  const appId = id.replace(/\D/g, ""); // digits only — can never widen the URL host
+  const res = await fetchWithTimeout(`https://itunes.apple.com/lookup?id=${appId}&country=us`);
   if (!res.ok) throw new ExtractError(`The App Store lookup failed (HTTP ${res.status}).`);
   const data = await res.json();
   if (!data.results || data.results.length === 0) throw new ExtractError("No App Store app found for that link.");
@@ -174,7 +178,7 @@ async function extractApple(id: string): Promise<Raw> {
   const icon = String(r.artworkUrl512 || r.artworkUrl100 || "").replace(/\/(\d+)x(\d+)bb\.jpg$/, "/256x256bb.png") || undefined;
   let subtitle: string | undefined;
   try {
-    subtitle = await fetchAppleSubtitle(r.trackViewUrl || `https://apps.apple.com/us/app/id${id}`, r.trackName || "");
+    subtitle = await fetchAppleSubtitle(`https://apps.apple.com/us/app/id${appId}`, r.trackName || "");
   } catch {
     /* best effort */
   }
@@ -280,7 +284,8 @@ function googleFullDescription(html: string, name: string, shortDesc?: string): 
 
 async function extractGoogle(id: string): Promise<Raw> {
   const warnings: string[] = [];
-  const res = await fetchWithTimeout(`https://play.google.com/store/apps/details?id=${id}&gl=US&hl=en`);
+  const pkg = id.replace(/[^a-zA-Z0-9._]/g, ""); // package-id charset only — literal host stays intact
+  const res = await fetchWithTimeout(`https://play.google.com/store/apps/details?id=${pkg}&gl=US&hl=en`);
   if (!res.ok) throw new ExtractError(`Google Play returned HTTP ${res.status} for that app.`);
   const html = await res.text();
   if (/We're sorry, the requested URL was not found/.test(html)) throw new ExtractError("No Google Play app found for that link.");

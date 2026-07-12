@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { extractListing, ExtractError } from "./index";
+import { extractListing, ExtractError, assertAllowedUrl } from "./index";
 
 // ---------------------------------------------------------------------------
 // fetch mocking — extractListing hits itunes.apple.com (JSON), apps.apple.com
@@ -164,11 +164,22 @@ describe("Apple extraction", () => {
     expect(noIcon.preview.icon).toBeUndefined();
   });
 
-  it("uses the fallback subtitle URL when trackViewUrl is absent, and warns on empty app name", async () => {
-    mockFetch({ itunes: itunes({ trackViewUrl: undefined, trackName: undefined }), subtitle: appleSubtitleHtml() });
+  it("warns and yields an empty app name when the listing has no track name", async () => {
+    mockFetch({ itunes: itunes({ trackName: undefined }), subtitle: appleSubtitleHtml() });
     const r = await extractListing("id1358823008");
     // trackName absent → findAppleSubtitle short-circuits on empty name → subtitle warning
     expect(r.patch.appName).toBe("");
+    expect(r.warnings.some((w) => /subtitle/i.test(w))).toBe(true);
+  });
+
+  it("swallows a subtitle-fetch failure and still returns the listing", async () => {
+    const fn = vi.fn(async (url: string | URL) => {
+      if (new URL(String(url)).hostname === "itunes.apple.com") return response(itunes());
+      throw new Error("network down"); // the apps.apple.com subtitle page fails
+    });
+    vi.stubGlobal("fetch", fn);
+    const r = await extractListing("id123");
+    expect(r.patch.appName).toBe("Flighty");
     expect(r.warnings.some((w) => /subtitle/i.test(w))).toBe(true);
   });
 
@@ -213,23 +224,24 @@ describe("Apple extraction", () => {
 });
 
 // ===========================================================================
-describe("SSRF allow-list (assertAllowedHost, via trackViewUrl)", () => {
-  it("rejects a disallowed subtitle host (caught → warning)", async () => {
-    mockFetch({ itunes: itunes({ trackViewUrl: "https://evil.example.com/app" }) });
-    const r = await extractListing("id123");
-    expect(r.warnings.some((w) => /subtitle/i.test(w))).toBe(true);
+describe("SSRF allow-list (assertAllowedUrl)", () => {
+  it("returns the parsed URL for each allow-listed https host", () => {
+    expect(assertAllowedUrl("https://itunes.apple.com/lookup?id=1").hostname).toBe("itunes.apple.com");
+    expect(assertAllowedUrl("https://apps.apple.com/us/app/id1").hostname).toBe("apps.apple.com");
+    expect(assertAllowedUrl("https://play.google.com/store/apps/details?id=a.b").hostname).toBe("play.google.com");
   });
 
-  it("rejects a non-https subtitle host", async () => {
-    mockFetch({ itunes: itunes({ trackViewUrl: "http://apps.apple.com/app" }) });
-    const r = await extractListing("id123");
-    expect(r.warnings.some((w) => /subtitle/i.test(w))).toBe(true);
+  it("rejects a disallowed host (including look-alikes)", () => {
+    expect(() => assertAllowedUrl("https://apps.apple.com.evil.example.com/app")).toThrow(ExtractError);
+    expect(() => assertAllowedUrl("https://evil.example.com/app")).toThrow(/App Store and Google Play/);
   });
 
-  it("rejects an invalid subtitle URL", async () => {
-    mockFetch({ itunes: itunes({ trackViewUrl: "::::not a url::::" }) });
-    const r = await extractListing("id123");
-    expect(r.warnings.some((w) => /subtitle/i.test(w))).toBe(true);
+  it("rejects a non-https scheme", () => {
+    expect(() => assertAllowedUrl("http://apps.apple.com/app")).toThrow(/App Store and Google Play/);
+  });
+
+  it("rejects an unparseable URL", () => {
+    expect(() => assertAllowedUrl("::::not a url::::")).toThrow(/Invalid store URL/);
   });
 
   it("aborts a hung request once the timeout fires", async () => {
