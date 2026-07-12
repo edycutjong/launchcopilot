@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { AppListing, LintReport } from "@/lib/aso-lint";
 import { ALL_RULES } from "@/lib/aso-lint";
 import type { ListingPreview } from "@/lib/extract";
 import type { Kit, KitEvent } from "@/lib/pipeline";
 import type { Panel } from "@/lib/pipeline/schemas";
-import { FIXTURE_META, FIXTURES } from "@/lib/fixtures";
+import { FIXTURE_META, FIXTURES, LINK_EXAMPLES } from "@/lib/fixtures";
 import { ScoreDial } from "./ScoreDial";
 import Landing from "./Landing";
 
@@ -229,7 +229,7 @@ function Footer() {
           </p>
         </div>
         <div>
-          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70">Product</div>
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70 footer-head">Product</div>
           <ul className="space-y-2 text-sm text-violet-200/80">
             <li>
               <a href="#" className="transition hover:text-cyan-300">Grade a listing</a>
@@ -243,7 +243,7 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70">Source</div>
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-300/70 footer-head">Source</div>
           <ul className="space-y-2 text-sm text-violet-200/80">
             <li>
               <a
@@ -338,6 +338,12 @@ function InputForm({
   const ios = listing.platform !== "android";
   const android = listing.platform !== "ios";
   const ready = listing.appName && listing.title && listing.description && listing.whatItDoes && listing.category;
+  const overLimit =
+    listing.title.length > 30 ||
+    listing.description.length > 4000 ||
+    (ios && (listing.subtitle ?? "").length > 30) ||
+    (ios && (listing.keywords ?? "").length > 100) ||
+    (android && (listing.shortDescription ?? "").length > 80);
 
   const [url, setUrl] = useState("");
   const [pulling, setPulling] = useState(false);
@@ -346,8 +352,8 @@ function InputForm({
   const [pullErr, setPullErr] = useState<string | null>(null);
   const [preview, setPreview] = useState<ListingPreview | null>(null);
 
-  const autofill = async () => {
-    const link = url.trim();
+  const autofill = async (pasted?: string) => {
+    const link = (pasted ?? url).trim();
     if (!link) {
       setPullErr("Paste an App Store or Google Play link.");
       return;
@@ -379,8 +385,29 @@ function InputForm({
     }
   };
 
+  const poolRef = useRef<HTMLDivElement>(null);
+  // Show a random handful of examples on load (shuffled + subset) without a
+  // hydration mismatch or setState-in-effect: the server renders the first few
+  // (see .ex-pool in globals.css) and this effect re-picks/reorders via inline
+  // styles only — pure DOM, so React never reconciles it.
+  useEffect(() => {
+    const el = poolRef.current;
+    if (!el) return;
+    const chips = Array.from(el.querySelectorAll<HTMLElement>("[data-ex]"));
+    const idx = chips.map((_, i) => i);
+    for (let i = idx.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [idx[i], idx[j]] = [idx[j], idx[i]];
+    }
+    const shown = new Set(idx.slice(0, Math.min(9, chips.length)));
+    chips.forEach((c, i) => {
+      c.style.display = shown.has(i) ? "inline-flex" : "none";
+      c.style.order = String(idx.indexOf(i));
+    });
+  }, []);
+
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[.03] p-5 sm:p-7">
+    <div id="grade-panel" className="scroll-mt-6 rounded-2xl border border-white/10 bg-white/[.03] p-5 sm:p-7">
       <div className="mb-5 rounded-xl border border-cyan-400/25 bg-cyan-400/[.05] p-4">
         <div className="mb-2 flex items-center gap-2 text-xs font-medium text-cyan-200">
           <span className="grid h-4 w-4 place-items-center rounded-full bg-cyan-400 text-[10px] font-bold text-black">↓</span>
@@ -400,7 +427,7 @@ function InputForm({
             className="min-w-0 flex-1 rounded-lg border border-white/10 bg-[#0f0526] px-3 py-2 font-mono text-xs text-white outline-none focus:border-cyan-400/60"
           />
           <button
-            onClick={autofill}
+            onClick={() => autofill()}
             disabled={pulling}
             className="rounded-full bg-cyan-400 px-5 py-2 text-sm font-semibold text-[#04121a] transition enabled:hover:bg-cyan-300 disabled:opacity-50"
           >
@@ -437,18 +464,41 @@ function InputForm({
         )}
       </div>
 
-      <div className="mb-5 flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-xs text-violet-300/70">…or try an example:</span>
-        {FIXTURE_META.map((f) => (
-          <button
-            key={f.id}
-            onClick={() => onExample(f.id)}
-            className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-xs text-white transition hover:border-cyan-400/50"
-            title={f.blurb}
-          >
-            {f.emoji} {f.label}
-          </button>
-        ))}
+      <div className="mb-5">
+        <div className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <span className="text-xs text-violet-300/70">…or try an example</span>
+          <span className="font-mono text-[10px] text-violet-400/60">
+            {FIXTURE_META.length} sample listings graded A→F · randomised each visit ·{" "}
+            <span className="text-cyan-300/70">↗ live</span> = real extraction
+          </span>
+        </div>
+        <div ref={poolRef} className="ex-pool flex flex-wrap gap-2">
+          {FIXTURE_META.map((f) => (
+            <button
+              key={f.id}
+              data-ex
+              onClick={() => onExample(f.id)}
+              className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-xs text-white transition hover:border-cyan-400/50"
+              title={f.blurb}
+            >
+              {f.emoji} {f.label}
+            </button>
+          ))}
+          {LINK_EXAMPLES.map((l) => (
+            <button
+              key={l.url}
+              data-ex
+              onClick={() => {
+                setUrl(l.url);
+                autofill(l.url);
+              }}
+              className="rounded-full border border-cyan-400/30 bg-cyan-400/[.06] px-3 py-1.5 text-xs text-cyan-100 transition hover:border-cyan-400/60"
+              title={`Live extraction · ${l.url}`}
+            >
+              {l.emoji} {l.label} <span className="text-cyan-300/70">↗ live</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -493,13 +543,15 @@ function InputForm({
 
       <div className="mt-6 flex items-center gap-4">
         <button
-          disabled={!ready || busy}
+          disabled={!ready || busy || overLimit}
           onClick={onGrade}
           className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0d0221] transition enabled:hover:bg-white/85 disabled:opacity-40"
         >
           {busy ? "Grading…" : "Grade my listing"}
         </button>
-        <span className="text-xs text-violet-300/60">Free · no signup · no API key needed to grade</span>
+        <span className={`text-xs ${overLimit ? "text-pink-400" : "text-violet-300/60"}`}>
+          {overLimit ? "Trim the fields over their character limit to grade." : "Free · no signup · no API key needed to grade"}
+        </span>
       </div>
     </div>
   );

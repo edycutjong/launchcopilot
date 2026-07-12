@@ -1,0 +1,794 @@
+[
+  {
+    "id": "sleepwave",
+    "emoji": "😴",
+    "label": "SleepWave",
+    "grade": "B",
+    "score": 89,
+    "listing": {
+      "appName": "SleepWave",
+      "platform": "ios",
+      "category": "Health & Fitness",
+      "title": "SleepWave: Sleep Sounds Noise",
+      "description": "Fall asleep faster with mixable soundscapes and a gentle wake-up alarm. SleepWave keeps it simple: sleep, sounds, noise, rain, relax, alarm. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download SleepWave today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Fall asleep faster with mixable soundscapes and a gentle wake-up alarm.",
+      "subtitle": "Sleep sounds & smart alarm",
+      "keywords": "rain,relax,bedtime,calm,night,ocean,thunder,fan,fall,asleep,faster,mixable,soundscapes,gentle"
+    }
+  },
+  {
+    "id": "budgetbloom",
+    "emoji": "🌸",
+    "label": "BudgetBloom",
+    "grade": "B",
+    "score": 88,
+    "listing": {
+      "appName": "BudgetBloom",
+      "platform": "both",
+      "category": "Finance",
+      "title": "BudgetBloom: Budget Expense",
+      "description": "See where your money goes and hit a savings goal every month. BudgetBloom keeps it simple: budget, expense, money, savings, spending, bills. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download BudgetBloom today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "See where your money goes and hit a savings goal every month.",
+      "subtitle": "Budget & expense tracker",
+      "keywords": "money,savings,spending,bills,income,cash,debt,goals,see,where,goes,hit,goal",
+      "shortDescription": "See where your money goes and hit a savings goal every month."
+    }
+  },
+  {
+    "id": "taskforge",
+    "emoji": "⚒️",
+    "label": "TaskForge",
+    "grade": "B",
+    "score": 89,
+    "listing": {
+      "appName": "TaskForge",
+      "platform": "both",
+      "category": "Productivity",
+      "title": "TaskForge: Todo Tasks Planner",
+      "description": "Turn a messy to-do list into a plan that schedules itself. TaskForge keeps it simple: todo, tasks, planner, reminders, checklist, projects. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download TaskForge today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Turn a messy to-do list into a plan that schedules itself.",
+      "subtitle": "To-do lists that plan you",
+      "keywords": "reminders,checklist,projects,deadlines,subtasks,agenda,turn,messy,list,schedules,itself",
+      "shortDescription": "Turn a messy to-do list into a plan that schedules itself."
+    }
+  },
+  {
+    "id": "runtrail",
+    "emoji": "🏃",
+    "label": "RunTrail",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "RunTrail",
+      "platform": "ios",
+      "category": "Health & Fitness",
+      "title": "RunTrail",
+      "description": "Track every run with live pace, distance and a route map. RunTrail keeps it simple: running, pace, distance, route, marathon, cadence. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Track every run with live pace, distance and a route map.",
+      "subtitle": "Run tracker with maps",
+      "keywords": "running,pace,distance,route,marathon,cadence"
+    }
+  },
+  {
+    "id": "snapedit",
+    "emoji": "📸",
+    "label": "SnapEdit",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "SnapEdit",
+      "platform": "both",
+      "category": "Photo & Video",
+      "title": "SnapEdit",
+      "description": "SnapEdit is the best Photo & Video app. SnapEdit is better than undefined. Download SnapEdit today. SnapEdit SnapEdit SnapEdit is amazing and SnapEdit is great. photo editor filters crop photo editor filters crop. The SnapEdit app has photo editor filters crop. SnapEdit is the number one Photo & Video app and SnapEdit works with SnapEdit.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Edit photos with filters, crop and one-tap fixes.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. SnapEdit for all."
+    }
+  },
+  {
+    "id": "recipenest",
+    "emoji": "🍳",
+    "label": "RecipeNest",
+    "grade": "B",
+    "score": 80,
+    "listing": {
+      "appName": "RecipeNest",
+      "platform": "both",
+      "category": "Food & Drink",
+      "title": "RecipeNest: Recipes Cooking",
+      "description": "Plan the week's dinners and build a grocery list in one tap. RecipeNest keeps it simple: recipes, cooking, meals, grocery, dinner, ideas. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download RecipeNest today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Plan the week's dinners and build a grocery list in one tap.",
+      "subtitle": "Recipes & meal planner",
+      "keywords": "meals,grocery,dinner,ideas,pantry,chef,baking,plan,week,dinners,build,list,one",
+      "shortDescription": "Plan the week's dinners and build a grocery list in one tap."
+    }
+  },
+  {
+    "id": "parkpal",
+    "emoji": "🅿️",
+    "label": "ParkPal",
+    "grade": "D",
+    "score": 53,
+    "listing": {
+      "appName": "ParkPal",
+      "platform": "both",
+      "category": "Travel",
+      "title": "ParkPal",
+      "description": "ParkPal is the best Travel app. ParkPal is better than spothero. Download ParkPal today. ParkPal ParkPal ParkPal is amazing and ParkPal is great. parking spot garage meter parking spot garage meter. The ParkPal app has parking spot garage meter. ParkPal is the number one Travel app and ParkPal works with ParkPal.",
+      "screenshotCount": 0,
+      "hasVideo": false,
+      "whatItDoes": "Find parking near you.",
+      "subtitle": "Like Netflix, but better",
+      "keywords": "",
+      "shortDescription": "Simple and easy. ParkPal for all."
+    }
+  },
+  {
+    "id": "lingualoop",
+    "emoji": "🗣️",
+    "label": "LinguaLoop",
+    "grade": "A",
+    "score": 91,
+    "listing": {
+      "appName": "LinguaLoop",
+      "platform": "both",
+      "category": "Education",
+      "title": "LinguaLoop: Language Spanish",
+      "description": "Learn a new language in five-minute daily lessons that stick. LinguaLoop keeps it simple: language, spanish, french, vocabulary, lessons, speak. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download LinguaLoop today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Learn a new language in five-minute daily lessons that stick.",
+      "subtitle": "Learn a language daily",
+      "keywords": "french,vocabulary,lessons,speak,fluent,grammar,phrases,five,minute,stick",
+      "shortDescription": "Learn a new language in five-minute daily lessons that stick."
+    }
+  },
+  {
+    "id": "moodjar",
+    "emoji": "🫙",
+    "label": "MoodJar",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "MoodJar",
+      "platform": "ios",
+      "category": "Health & Fitness",
+      "title": "MoodJar",
+      "description": "Log your mood in seconds and spot what lifts it. MoodJar keeps it simple: mood, journal, diary, wellbeing, feelings, emotions. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Log your mood in seconds and spot what lifts it.",
+      "subtitle": "Mood & journal tracker",
+      "keywords": "diary,wellbeing,feelings,emotions,triggers"
+    }
+  },
+  {
+    "id": "pixeldash",
+    "emoji": "🕹️",
+    "label": "PixelDash",
+    "grade": "C",
+    "score": 67,
+    "listing": {
+      "appName": "PixelDash",
+      "platform": "both",
+      "category": "Games",
+      "title": "PixelDash",
+      "description": "PixelDash is the best Games app. PixelDash is better than undefined. Download PixelDash today. PixelDash PixelDash PixelDash is amazing and PixelDash is great. arcade runner retro pixel arcade runner retro pixel. The PixelDash app has arcade runner retro pixel. PixelDash is the number one Games app and PixelDash works with PixelDash.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Dash through neon levels in this fast arcade runner.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. PixelDash for all."
+    }
+  },
+  {
+    "id": "cryptocalm",
+    "emoji": "📉",
+    "label": "CoinTide",
+    "grade": "D",
+    "score": 53,
+    "listing": {
+      "appName": "CoinTide",
+      "platform": "both",
+      "category": "Finance",
+      "title": "CoinTide",
+      "description": "CoinTide is the best Finance app. CoinTide is better than coinbase. Download CoinTide today. CoinTide CoinTide CoinTide is amazing and CoinTide is great. crypto bitcoin prices portfolio crypto bitcoin prices portfolio. The CoinTide app has crypto bitcoin prices portfolio. CoinTide is the number one Finance app and CoinTide works with CoinTide.",
+      "screenshotCount": 0,
+      "hasVideo": false,
+      "whatItDoes": "Track crypto prices.",
+      "subtitle": "Like Instagram, but better",
+      "keywords": "",
+      "shortDescription": "Simple and easy. CoinTide for all."
+    }
+  },
+  {
+    "id": "chorechamp",
+    "emoji": "🧹",
+    "label": "ChoreChamp",
+    "grade": "A",
+    "score": 94,
+    "listing": {
+      "appName": "ChoreChamp",
+      "platform": "both",
+      "category": "Productivity",
+      "title": "ChoreChamp: Chores Family Kids",
+      "description": "Share chores with the family and make them actually get done. ChoreChamp keeps it simple: chores, family, household, kids, rewards, chart. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download ChoreChamp today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Share chores with the family and make them actually get done.",
+      "subtitle": "Family chore chart",
+      "keywords": "household,rewards,routine,tidy,share,make,them,actually,done",
+      "shortDescription": "Share chores with the family and make them actually get done."
+    }
+  },
+  {
+    "id": "focusfern",
+    "emoji": "🌿",
+    "label": "FocusFern",
+    "grade": "B",
+    "score": 83,
+    "listing": {
+      "appName": "FocusFern",
+      "platform": "ios",
+      "category": "Productivity",
+      "title": "FocusFern: Focus Pomodoro Deep",
+      "description": "Beat distraction with focus sessions that grow a garden. FocusFern keeps it simple: focus, pomodoro, concentration, study, deep, work. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download FocusFern today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Beat distraction with focus sessions that grow a garden.",
+      "subtitle": "Focus timer that grows",
+      "keywords": "concentration,study,work,distraction,sessions,beat,grow,garden"
+    }
+  },
+  {
+    "id": "trailmix",
+    "emoji": "🎧",
+    "label": "TrailMix",
+    "grade": "C",
+    "score": 69,
+    "listing": {
+      "appName": "TrailMix",
+      "platform": "both",
+      "category": "Music",
+      "title": "TrailMix",
+      "description": "Build the perfect playlist for any moment in seconds. TrailMix keeps it simple: playlist, songs, mix, mood, discover, queue. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Build the perfect playlist for any moment in seconds.",
+      "subtitle": "Playlists for every mood",
+      "keywords": "playlist,songs,mix,discover,queue,radio,build",
+      "shortDescription": "Build the perfect playlist for any moment in seconds."
+    }
+  },
+  {
+    "id": "vaultkey",
+    "emoji": "🔐",
+    "label": "VaultKey",
+    "grade": "A",
+    "score": 94,
+    "listing": {
+      "appName": "VaultKey",
+      "platform": "both",
+      "category": "Utilities",
+      "title": "VaultKey: Password Manager",
+      "description": "Keep every password safe and autofill them anywhere. VaultKey keeps it simple: password, manager, vault, secure, autofill, login. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download VaultKey today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Keep every password safe and autofill them anywhere.",
+      "subtitle": "Password manager & vault",
+      "keywords": "secure,autofill,login,passkey,encrypt,keep,safe,them,anywhere",
+      "shortDescription": "Keep every password safe and autofill them anywhere."
+    }
+  },
+  {
+    "id": "scanswift",
+    "emoji": "📄",
+    "label": "ScanSwift",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "ScanSwift",
+      "platform": "both",
+      "category": "Business",
+      "title": "ScanSwift",
+      "description": "ScanSwift is the best Business app. ScanSwift is better than undefined. Download ScanSwift today. ScanSwift ScanSwift ScanSwift is amazing and ScanSwift is great. scanner document scan receipts scanner document scan receipts. The ScanSwift app has scanner document scan receipts. ScanSwift is the number one Business app and ScanSwift works with ScanSwift.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Scan any document to a clean PDF from your phone.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. ScanSwift for all."
+    }
+  },
+  {
+    "id": "petpal",
+    "emoji": "🐾",
+    "label": "PetPal",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "PetPal",
+      "platform": "both",
+      "category": "Lifestyle",
+      "title": "PetPal",
+      "description": "Never miss a walk, feeding or vet visit for your pet. PetPal keeps it simple: dog, cat, care, reminders, vet, feeding. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Never miss a walk, feeding or vet visit for your pet.",
+      "subtitle": "Pet care reminders",
+      "keywords": "dog,cat,vet,feeding,walk,grooming,never,miss",
+      "shortDescription": "Never miss a walk, feeding or vet visit for your pet."
+    }
+  },
+  {
+    "id": "mealmap",
+    "emoji": "🥗",
+    "label": "MealMap",
+    "grade": "B",
+    "score": 86,
+    "listing": {
+      "appName": "MealMap",
+      "platform": "ios",
+      "category": "Food & Drink",
+      "title": "MealMap: Meal Prep Macros Diet",
+      "description": "Plan meals that hit your macros without the spreadsheet. MealMap keeps it simple: meal, prep, macros, nutrition, diet, calories. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download MealMap today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Plan meals that hit your macros without the spreadsheet.",
+      "subtitle": "Meal prep & macros",
+      "keywords": "nutrition,calories,healthy,protein,plan,meals,hit,without,spreadsheet"
+    }
+  },
+  {
+    "id": "glowup",
+    "emoji": "✨",
+    "label": "SkinGlow",
+    "grade": "D",
+    "score": 53,
+    "listing": {
+      "appName": "SkinGlow",
+      "platform": "both",
+      "category": "Health & Fitness",
+      "title": "SkinGlow",
+      "description": "SkinGlow is the best Health & Fitness app. SkinGlow is better than sephora. Download SkinGlow today. SkinGlow SkinGlow SkinGlow is amazing and SkinGlow is great. skincare routine beauty face skincare routine beauty face. The SkinGlow app has skincare routine beauty face. SkinGlow is the number one Health & Fitness app and SkinGlow works with SkinGlow.",
+      "screenshotCount": 0,
+      "hasVideo": false,
+      "whatItDoes": "Skincare routine.",
+      "subtitle": "Like Instagram, but better",
+      "keywords": "",
+      "shortDescription": "Simple and easy. SkinGlow for all."
+    }
+  },
+  {
+    "id": "codecanvas",
+    "emoji": "💻",
+    "label": "CodeCanvas",
+    "grade": "B",
+    "score": 88,
+    "listing": {
+      "appName": "CodeCanvas",
+      "platform": "both",
+      "category": "Developer Tools",
+      "title": "CodeCanvas: Code Snippets Gist",
+      "description": "Save, search and run code snippets from anywhere. CodeCanvas keeps it simple: code, snippets, programming, developer, editor, syntax. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download CodeCanvas today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Save, search and run code snippets from anywhere.",
+      "subtitle": "Code snippets on the go",
+      "keywords": "programming,developer,editor,syntax,terminal,regex,save,search,run,anywhere",
+      "shortDescription": "Save, search and run code snippets from anywhere."
+    }
+  },
+  {
+    "id": "driftmap",
+    "emoji": "🗺️",
+    "label": "DriftMap",
+    "grade": "C",
+    "score": 74,
+    "listing": {
+      "appName": "DriftMap",
+      "platform": "both",
+      "category": "Navigation",
+      "title": "DriftMap",
+      "description": "Navigate offline with maps that work with no signal. DriftMap keeps it simple: maps, offline, navigation, trails, directions, gps. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Navigate offline with maps that work with no signal.",
+      "subtitle": "Offline maps & trails",
+      "keywords": "navigation,directions,gps,compass,waypoints",
+      "shortDescription": "Navigate offline with maps that work with no signal."
+    }
+  },
+  {
+    "id": "tidytide",
+    "emoji": "🧼",
+    "label": "TidyTide",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "TidyTide",
+      "platform": "both",
+      "category": "Lifestyle",
+      "title": "TidyTide",
+      "description": "TidyTide is the best Lifestyle app. TidyTide is better than undefined. Download TidyTide today. TidyTide TidyTide TidyTide is amazing and TidyTide is great. cleaning schedule chores tidy cleaning schedule chores tidy. The TidyTide app has cleaning schedule chores tidy. TidyTide is the number one Lifestyle app and TidyTide works with TidyTide.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Keep the house clean with a rolling cleaning schedule.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. TidyTide for all."
+    }
+  },
+  {
+    "id": "stargaze",
+    "emoji": "🔭",
+    "label": "StarGaze",
+    "grade": "B",
+    "score": 86,
+    "listing": {
+      "appName": "StarGaze",
+      "platform": "both",
+      "category": "Education",
+      "title": "StarGaze: Astronomy Stars Sky",
+      "description": "Point your phone at the sky and name every star. StarGaze keeps it simple: astronomy, stars, planets, sky, telescope, constellations. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download StarGaze today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Point your phone at the sky and name every star.",
+      "subtitle": "Stargazing & planets",
+      "keywords": "telescope,constellations,moon,nebula,point,phone,name,star",
+      "shortDescription": "Point your phone at the sky and name every star."
+    }
+  },
+  {
+    "id": "calmcove",
+    "emoji": "🧘",
+    "label": "StillMind",
+    "grade": "B",
+    "score": 89,
+    "listing": {
+      "appName": "StillMind",
+      "platform": "both",
+      "category": "Health & Fitness",
+      "title": "StillMind: Meditation Sleep",
+      "description": "Guided meditations and sleep stories that quiet a busy mind. StillMind keeps it simple: meditation, sleep, anxiety, mindfulness, breathing, stress. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download StillMind today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Guided meditations and sleep stories that quiet a busy mind.",
+      "subtitle": "Meditation & sleep stories",
+      "keywords": "anxiety,mindfulness,breathing,stress,relax,unwind,serenity,guided,meditations,quiet,busy,mind",
+      "shortDescription": "Guided meditations and sleep stories that quiet a busy mind."
+    }
+  },
+  {
+    "id": "flashcardly",
+    "emoji": "🃏",
+    "label": "FlashCardly",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "FlashCardly",
+      "platform": "both",
+      "category": "Education",
+      "title": "FlashCardly",
+      "description": "Memorise anything with spaced-repetition flashcards. FlashCardly keeps it simple: flashcards, study, memory, spaced, repetition, exam. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Memorise anything with spaced-repetition flashcards.",
+      "subtitle": "Flashcards that stick",
+      "keywords": "study,memory,spaced,repetition,exam,revise",
+      "shortDescription": "Memorise anything with spaced-repetition flashcards."
+    }
+  },
+  {
+    "id": "greenthumb",
+    "emoji": "🪴",
+    "label": "GreenThumb",
+    "grade": "A",
+    "score": 94,
+    "listing": {
+      "appName": "GreenThumb",
+      "platform": "ios",
+      "category": "Lifestyle",
+      "title": "GreenThumb: Plants Garden Soil",
+      "description": "Keep every houseplant alive with watering reminders. GreenThumb keeps it simple: plants, garden, watering, houseplant, reminders, soil. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download GreenThumb today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Keep every houseplant alive with watering reminders.",
+      "subtitle": "Plant care & watering",
+      "keywords": "houseplant,reminders,light,fertilize,keep,alive"
+    }
+  },
+  {
+    "id": "notenest",
+    "emoji": "📝",
+    "label": "NoteNest",
+    "grade": "A",
+    "score": 91,
+    "listing": {
+      "appName": "NoteNest",
+      "platform": "both",
+      "category": "Productivity",
+      "title": "NoteNest: Notes Notebook Ideas",
+      "description": "Capture notes fast and link ideas into a second brain. NoteNest keeps it simple: notes, notebook, writing, ideas, markdown, organize. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download NoteNest today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Capture notes fast and link ideas into a second brain.",
+      "subtitle": "Notes that link ideas",
+      "keywords": "writing,markdown,organize,search,backlinks,tags,capture,fast,second,brain",
+      "shortDescription": "Capture notes fast and link ideas into a second brain."
+    }
+  },
+  {
+    "id": "fitfuel",
+    "emoji": "🍎",
+    "label": "FitFuel",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "FitFuel",
+      "platform": "both",
+      "category": "Health & Fitness",
+      "title": "FitFuel",
+      "description": "FitFuel is the best Health & Fitness app. FitFuel is better than undefined. Download FitFuel today. FitFuel FitFuel FitFuel is amazing and FitFuel is great. nutrition calories food diet nutrition calories food diet. The FitFuel app has nutrition calories food diet. FitFuel is the number one Health & Fitness app and FitFuel works with FitFuel.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Log meals and count calories easily.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. FitFuel for all."
+    }
+  },
+  {
+    "id": "datedeck",
+    "emoji": "❤️",
+    "label": "DateDeck",
+    "grade": "F",
+    "score": 45,
+    "listing": {
+      "appName": "DateDeck",
+      "platform": "both",
+      "category": "Social Networking",
+      "title": "DateDeck",
+      "description": "DateDeck is the best Social Networking app. DateDeck is better than tinder. Download DateDeck today. DateDeck DateDeck DateDeck is amazing and DateDeck is great. dating match singles chat dating match singles chat. The DateDeck app has dating match singles chat. DateDeck is the number one Social Networking app and DateDeck works with DateDeck.",
+      "screenshotCount": 0,
+      "hasVideo": false,
+      "whatItDoes": "Meet people.",
+      "subtitle": "Like Instagram, but better",
+      "keywords": "",
+      "shortDescription": "Simple and easy. DateDeck for all."
+    }
+  },
+  {
+    "id": "weatherwisp",
+    "emoji": "⛅",
+    "label": "WeatherWisp",
+    "grade": "C",
+    "score": 74,
+    "listing": {
+      "appName": "WeatherWisp",
+      "platform": "both",
+      "category": "Weather",
+      "title": "WeatherWisp",
+      "description": "Know exactly when rain starts on your street. WeatherWisp keeps it simple: weather, forecast, rain, radar, temperature, hourly. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Know exactly when rain starts on your street.",
+      "subtitle": "Hyperlocal forecast",
+      "keywords": "weather,rain,radar,temperature,hourly,storm",
+      "shortDescription": "Know exactly when rain starts on your street."
+    }
+  },
+  {
+    "id": "inkflow",
+    "emoji": "🖋️",
+    "label": "InkFlow",
+    "grade": "B",
+    "score": 86,
+    "listing": {
+      "appName": "InkFlow",
+      "platform": "ios",
+      "category": "Productivity",
+      "title": "InkFlow: Journal Diary Writing",
+      "description": "Build a journaling habit with a prompt every morning. InkFlow keeps it simple: journal, diary, writing, prompts, gratitude, reflection. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download InkFlow today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Build a journaling habit with a prompt every morning.",
+      "subtitle": "Daily journal & prompts",
+      "keywords": "gratitude,reflection,habit,mood,build,journaling,prompt,morning"
+    }
+  },
+  {
+    "id": "brewbar",
+    "emoji": "☕",
+    "label": "BrewBar",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "BrewBar",
+      "platform": "both",
+      "category": "Food & Drink",
+      "title": "BrewBar",
+      "description": "Brew better coffee with dialled-in recipes and timers. BrewBar keeps it simple: coffee, brew, espresso, pourover, recipes, timer. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Brew better coffee with dialled-in recipes and timers.",
+      "subtitle": "Coffee brew guides",
+      "keywords": "espresso,pourover,recipes,timer,beans,grind",
+      "shortDescription": "Brew better coffee with dialled-in recipes and timers."
+    }
+  },
+  {
+    "id": "mindmaze",
+    "emoji": "🧩",
+    "label": "MindMaze",
+    "grade": "A",
+    "score": 94,
+    "listing": {
+      "appName": "MindMaze",
+      "platform": "both",
+      "category": "Games",
+      "title": "MindMaze: Puzzle Brain Logic",
+      "description": "Sharpen your brain with a fresh logic puzzle each day. MindMaze keeps it simple: puzzle, brain, logic, riddle, mind, train. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download MindMaze today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Sharpen your brain with a fresh logic puzzle each day.",
+      "subtitle": "Daily logic puzzles",
+      "keywords": "riddle,mind,train,sudoku,crossword,sharpen,fresh,each,day",
+      "shortDescription": "Sharpen your brain with a fresh logic puzzle each day."
+    }
+  },
+  {
+    "id": "safestep",
+    "emoji": "🦺",
+    "label": "SafeStep",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "SafeStep",
+      "platform": "both",
+      "category": "Medical",
+      "title": "SafeStep",
+      "description": "SafeStep is the best Medical app. SafeStep is better than undefined. Download SafeStep today. SafeStep SafeStep SafeStep is amazing and SafeStep is great. safety seniors emergency alert safety seniors emergency alert. The SafeStep app has safety seniors emergency alert. SafeStep is the number one Medical app and SafeStep works with SafeStep.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Send an alert to family with one tap in an emergency.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. SafeStep for all."
+    }
+  },
+  {
+    "id": "tunetutor",
+    "emoji": "🎸",
+    "label": "TuneTutor",
+    "grade": "A",
+    "score": 91,
+    "listing": {
+      "appName": "TuneTutor",
+      "platform": "both",
+      "category": "Education",
+      "title": "TuneTutor: Guitar Lessons Tabs",
+      "description": "Learn real songs on guitar with step-by-step lessons. TuneTutor keeps it simple: guitar, lessons, chords, music, songs, practice. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download TuneTutor today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Learn real songs on guitar with step-by-step lessons.",
+      "subtitle": "Learn guitar by ear",
+      "keywords": "chords,music,songs,practice,strumming,fretboard,real,step",
+      "shortDescription": "Learn real songs on guitar with step-by-step lessons."
+    }
+  },
+  {
+    "id": "swiftsaver",
+    "emoji": "🐷",
+    "label": "SwiftSaver",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "SwiftSaver",
+      "platform": "ios",
+      "category": "Finance",
+      "title": "SwiftSaver",
+      "description": "Save spare change automatically on every purchase. SwiftSaver keeps it simple: savings, roundup, goals, bank, automatic, save. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Save spare change automatically on every purchase.",
+      "subtitle": "Round-up savings",
+      "keywords": "roundup,goals,bank,automatic,save,vault,spare"
+    }
+  },
+  {
+    "id": "trailblaze",
+    "emoji": "🥾",
+    "label": "TrailBlaze",
+    "grade": "A",
+    "score": 94,
+    "listing": {
+      "appName": "TrailBlaze",
+      "platform": "both",
+      "category": "Health & Fitness",
+      "title": "TrailBlaze: Hiking Trails Gps",
+      "description": "Find hikes near you and track every summit. TrailBlaze keeps it simple: hiking, trails, outdoors, routes, mountains, gps. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Featured on the App Store. Download TrailBlaze today and feel the difference this week.",
+      "screenshotCount": 6,
+      "hasVideo": true,
+      "whatItDoes": "Find hikes near you and track every summit.",
+      "subtitle": "Hiking routes & tracker",
+      "keywords": "outdoors,mountains,elevation,summit,find,hikes,near,track",
+      "shortDescription": "Find hikes near you and track every summit."
+    }
+  },
+  {
+    "id": "storystream",
+    "emoji": "🎧",
+    "label": "StoryStream",
+    "grade": "A",
+    "score": 91,
+    "listing": {
+      "appName": "StoryStream",
+      "platform": "both",
+      "category": "Entertainment",
+      "title": "StoryStream: Audiobooks Books",
+      "description": "Listen to bestselling audiobooks and original stories. StoryStream keeps it simple: audiobooks, stories, fiction, narration, books, listen. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through. Loved by over 40,000 people. Download StoryStream today and feel the difference this week.",
+      "screenshotCount": 8,
+      "hasVideo": true,
+      "whatItDoes": "Listen to bestselling audiobooks and original stories.",
+      "subtitle": "Audiobooks & stories",
+      "keywords": "fiction,narration,listen,chapters,sleep,bestselling,original",
+      "shortDescription": "Listen to bestselling audiobooks and original stories."
+    }
+  },
+  {
+    "id": "quickquote",
+    "emoji": "🧾",
+    "label": "QuickQuote",
+    "grade": "D",
+    "score": 61,
+    "listing": {
+      "appName": "QuickQuote",
+      "platform": "both",
+      "category": "Business",
+      "title": "QuickQuote",
+      "description": "QuickQuote is the best Business app. QuickQuote is better than undefined. Download QuickQuote today. QuickQuote QuickQuote QuickQuote is amazing and QuickQuote is great. invoice quotes billing freelance invoice quotes billing freelance. The QuickQuote app has invoice quotes billing freelance. QuickQuote is the number one Business app and QuickQuote works with QuickQuote.",
+      "screenshotCount": 2,
+      "hasVideo": false,
+      "whatItDoes": "Send professional invoices and quotes from your phone.",
+      "subtitle": "Fast and powerful",
+      "keywords": "",
+      "shortDescription": "Fast and powerful. QuickQuote for all."
+    }
+  },
+  {
+    "id": "zenzone",
+    "emoji": "🌬️",
+    "label": "ZenZone",
+    "grade": "C",
+    "score": 77,
+    "listing": {
+      "appName": "ZenZone",
+      "platform": "both",
+      "category": "Health & Fitness",
+      "title": "ZenZone",
+      "description": "Calm anxiety in two minutes with guided breathing. ZenZone keeps it simple: breathing, anxiety, relax, stress, mindfulness, focus. Built for people who want results without the busywork, it works in seconds and stays out of your way. Every screen is fast, private and designed to help you actually follow through.",
+      "screenshotCount": 5,
+      "hasVideo": false,
+      "whatItDoes": "Calm anxiety in two minutes with guided breathing.",
+      "subtitle": "Breathing exercises",
+      "keywords": "anxiety,relax,stress,mindfulness,focus,exhale",
+      "shortDescription": "Calm anxiety in two minutes with guided breathing."
+    }
+  }
+]

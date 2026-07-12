@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/icon-animated.svg" alt="LaunchCopilot" width="144" height="144">
+</p>
+
+<p align="center">
   <img src="docs/readme-hero-animated.svg" alt="LaunchCopilot — paste your store listing, get a graded, validated launch kit (ASO 27 → 93)" width="100%">
 </p>
 

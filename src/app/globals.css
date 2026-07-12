@@ -91,6 +91,7 @@ html.theme-light .text-violet-100\/80,
 html.theme-light .text-violet-100\/75,
 html.theme-light .text-violet-100\/70,
 html.theme-light .text-violet-200,
+html.theme-light .text-violet-200\/80,
 html.theme-light .text-violet-200\/70,
 html.theme-light .text-violet-200\/60 { color: #423c58 !important; }
 html.theme-light .text-violet-300\/70,
@@ -110,6 +111,18 @@ html.theme-light .text-pink-400\/80,
 html.theme-light .text-pink-300,
 html.theme-light .text-pink-200 { color: #be185d !important; }
 html.theme-light .text-amber-300\/80 { color: #b45309 !important; }
+
+/* footer column labels — the light default (#0e7490) reads too faint on the grey
+   footer, so give them a darker, higher-contrast teal in light mode */
+html.theme-light .footer-head { color: #155e75 !important; }
+
+/* smooth in-page scrolling (e.g. the hero "Grade my app" jump to the form) */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* example pool: server renders the first 9 chips (also the no-JS fallback); a
+   client effect then picks a random subset + order — see InputForm's poolRef */
+.ex-pool > [data-ex]:nth-child(n + 10) { display: none; }
 
 /* theme-toggle glyph — chosen by CSS, no JS state (no hydration mismatch) */
 .theme-light-only { display: none; }
