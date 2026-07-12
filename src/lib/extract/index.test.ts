@@ -225,23 +225,19 @@ describe("Apple extraction", () => {
 
 // ===========================================================================
 describe("SSRF allow-list (assertAllowedUrl)", () => {
-  it("returns the parsed URL for each allow-listed https host", () => {
-    expect(assertAllowedUrl("https://itunes.apple.com/lookup?id=1").hostname).toBe("itunes.apple.com");
-    expect(assertAllowedUrl("https://apps.apple.com/us/app/id1").hostname).toBe("apps.apple.com");
-    expect(assertAllowedUrl("https://play.google.com/store/apps/details?id=a.b").hostname).toBe("play.google.com");
+  it("returns the URL for each allow-listed https host", () => {
+    expect(assertAllowedUrl(new URL("https://itunes.apple.com/lookup?id=1")).hostname).toBe("itunes.apple.com");
+    expect(assertAllowedUrl(new URL("https://apps.apple.com/us/app/id1")).hostname).toBe("apps.apple.com");
+    expect(assertAllowedUrl(new URL("https://play.google.com/store/apps/details?id=a.b")).hostname).toBe("play.google.com");
   });
 
   it("rejects a disallowed host (including look-alikes)", () => {
-    expect(() => assertAllowedUrl("https://apps.apple.com.evil.example.com/app")).toThrow(ExtractError);
-    expect(() => assertAllowedUrl("https://evil.example.com/app")).toThrow(/App Store and Google Play/);
+    expect(() => assertAllowedUrl(new URL("https://apps.apple.com.evil.example.com/app"))).toThrow(ExtractError);
+    expect(() => assertAllowedUrl(new URL("https://evil.example.com/app"))).toThrow(/App Store and Google Play/);
   });
 
   it("rejects a non-https scheme", () => {
-    expect(() => assertAllowedUrl("http://apps.apple.com/app")).toThrow(/App Store and Google Play/);
-  });
-
-  it("rejects an unparseable URL", () => {
-    expect(() => assertAllowedUrl("::::not a url::::")).toThrow(/Invalid store URL/);
+    expect(() => assertAllowedUrl(new URL("http://apps.apple.com/app"))).toThrow(/App Store and Google Play/);
   });
 
   it("aborts a hung request once the timeout fires", async () => {

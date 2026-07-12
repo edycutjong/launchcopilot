@@ -14,24 +14,19 @@ const UA =
 export class ExtractError extends Error {}
 
 /**
- * SSRF allow-list (CWE-918 / CodeQL `js/request-forgery`). Defence in depth:
- * every URL we fetch is built from a *literal* host plus a sanitized numeric /
- * package id — a hostile host can never be assembled — and {@link assertAllowedUrl}
- * re-validates the host of every outbound request before it leaves.
+ * SSRF hardening (CWE-918 / CodeQL `js/request-forgery`). Every request URL is
+ * built from a *literal-constant host* with the user-derived id confined to the
+ * query/path (via `URL` + `searchParams`), so the request target host is fixed
+ * at author time and can't be influenced by input. {@link assertAllowedUrl} is a
+ * belt-and-braces check that the host is one we expect before anything leaves.
  */
 const ALLOWED_HOSTS = ["itunes.apple.com", "apps.apple.com", "play.google.com"];
 
-export function assertAllowedUrl(url: string): URL {
-  let parsed: URL;
-  try {
-    parsed = new URL(url);
-  } catch {
-    throw new ExtractError("Invalid store URL.");
-  }
-  if (parsed.protocol !== "https:" || !ALLOWED_HOSTS.includes(parsed.hostname)) {
+export function assertAllowedUrl(u: URL): URL {
+  if (u.protocol !== "https:" || !ALLOWED_HOSTS.includes(u.hostname)) {
     throw new ExtractError("Only App Store and Google Play links can be fetched.");
   }
-  return parsed;
+  return u;
 }
 
 export interface ListingPreview {
@@ -69,8 +64,8 @@ interface Raw {
   warnings: string[];
 }
 
-async function fetchWithTimeout(url: string, ms = 12000) {
-  const target = assertAllowedUrl(url);
+async function fetchWithTimeout(target: URL, ms = 12000) {
+  assertAllowedUrl(target);
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
@@ -159,7 +154,7 @@ function findAppleSubtitle(html: string, appName: string): string | undefined {
   return m ? decodeEntities(m[1]).trim() : undefined;
 }
 
-async function fetchAppleSubtitle(url: string, appName: string): Promise<string | undefined> {
+async function fetchAppleSubtitle(url: URL, appName: string): Promise<string | undefined> {
   const res = await fetchWithTimeout(url, 8000);
   if (!res.ok) return undefined;
   return findAppleSubtitle(await res.text(), appName);
@@ -167,8 +162,11 @@ async function fetchAppleSubtitle(url: string, appName: string): Promise<string 
 
 async function extractApple(id: string): Promise<Raw> {
   const warnings: string[] = [];
-  const appId = id.replace(/\D/g, ""); // digits only — can never widen the URL host
-  const res = await fetchWithTimeout(`https://itunes.apple.com/lookup?id=${appId}&country=us`);
+  const appId = id.replace(/\D/g, ""); // digits only
+  const lookup = new URL("https://itunes.apple.com/lookup"); // literal host; id goes in the query
+  lookup.searchParams.set("id", appId);
+  lookup.searchParams.set("country", "us");
+  const res = await fetchWithTimeout(lookup);
   if (!res.ok) throw new ExtractError(`The App Store lookup failed (HTTP ${res.status}).`);
   const data = await res.json();
   if (!data.results || data.results.length === 0) throw new ExtractError("No App Store app found for that link.");
@@ -178,7 +176,9 @@ async function extractApple(id: string): Promise<Raw> {
   const icon = String(r.artworkUrl512 || r.artworkUrl100 || "").replace(/\/(\d+)x(\d+)bb\.jpg$/, "/256x256bb.png") || undefined;
   let subtitle: string | undefined;
   try {
-    subtitle = await fetchAppleSubtitle(`https://apps.apple.com/us/app/id${appId}`, r.trackName || "");
+    const subtitleUrl = new URL("https://apps.apple.com"); // literal host; id goes in the path
+    subtitleUrl.pathname = `/us/app/id${appId}`;
+    subtitle = await fetchAppleSubtitle(subtitleUrl, r.trackName || "");
   } catch {
     /* best effort */
   }
@@ -284,8 +284,12 @@ function googleFullDescription(html: string, name: string, shortDesc?: string): 
 
 async function extractGoogle(id: string): Promise<Raw> {
   const warnings: string[] = [];
-  const pkg = id.replace(/[^a-zA-Z0-9._]/g, ""); // package-id charset only — literal host stays intact
-  const res = await fetchWithTimeout(`https://play.google.com/store/apps/details?id=${pkg}&gl=US&hl=en`);
+  const pkg = id.replace(/[^a-zA-Z0-9._]/g, ""); // package-id charset only
+  const details = new URL("https://play.google.com/store/apps/details"); // literal host; id in the query
+  details.searchParams.set("id", pkg);
+  details.searchParams.set("gl", "US");
+  details.searchParams.set("hl", "en");
+  const res = await fetchWithTimeout(details);
   if (!res.ok) throw new ExtractError(`Google Play returned HTTP ${res.status} for that app.`);
   const html = await res.text();
   if (/We're sorry, the requested URL was not found/.test(html)) throw new ExtractError("No Google Play app found for that link.");
