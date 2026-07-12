@@ -1,29 +1,33 @@
-<p align="center">
-  <img src="docs/icon-animated.svg" alt="LaunchCopilot" width="144" height="144">
-</p>
+<div align="center">
 
-<p align="center">
+  <img src="docs/icon-animated.svg" alt="LaunchCopilot Icon" width="144">
+
+  <h1>LaunchCopilot 🚀</h1>
+
+  <p><em>Paste your app&rsquo;s store listing → a graded, validated launch kit — in about a minute.</em></p>
+
   <img src="docs/readme-hero-animated.svg" alt="LaunchCopilot — paste your store listing, get a graded, validated launch kit (ASO 27 → 93)" width="100%">
-</p>
 
-<p align="center">
-  <a href="https://launchcopilot.edycu.dev"><img alt="Live Demo" src="https://img.shields.io/badge/%E2%96%B6_Live_Demo-06b6d4?style=for-the-badge&labelColor=0d0221"></a>
-  <!-- REPLACE the href below with your YouTube demo link before submitting -->
-  <a href="https://youtu.be/REPLACE_ME"><img alt="Pitch Video" src="https://img.shields.io/badge/%F0%9F%8E%AC_Pitch_Video-ef4444?style=for-the-badge&labelColor=0d0221"></a>
-  <a href="https://launchcopilot.edycu.dev/pitch"><img alt="Pitch Deck" src="https://img.shields.io/badge/%F0%9F%93%8A_Pitch_Deck-f59e0b?style=for-the-badge&labelColor=0d0221"></a>
-</p>
+  <br/>
 
-<p align="center">
-  <a href="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml/badge.svg"></a>
-  <img alt="tests" src="https://img.shields.io/badge/tests-150%20passing-00d4ff?style=flat-square&labelColor=0d0221">
-  <img alt="engine" src="https://img.shields.io/badge/ASO%20engine-28%20rules-ff2d95?style=flat-square&labelColor=0d0221">
-  <img alt="stack" src="https://img.shields.io/badge/Next.js%2016-Claude-8b00ff?style=flat-square&labelColor=0d0221">
-  <img alt="license" src="https://img.shields.io/badge/license-MIT-00ffd1?style=flat-square&labelColor=0d0221">
-</p>
+<!-- ⚠️ Before submitting: replace youtu.be/REPLACE_ME below with the real YouTube demo link -->
 
-<p align="center"><b>Paste your app's store link. Get a graded, validated launch kit — in about a minute.</b></p>
+[![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-06b6d4?style=for-the-badge)](https://launchcopilot.edycu.dev)
+[![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://launchcopilot.edycu.dev/pitch)
+[![Demo Video](https://img.shields.io/badge/🎬_Demo-Video-ef4444?style=for-the-badge)](https://youtu.be/REPLACE_ME)
+[![Built for HackOnVibe](https://img.shields.io/badge/HackOnVibe-Promote_a_New_App-8b5cf6?style=for-the-badge)](https://hackonvibe.com)
 
-<p align="center"><sub>Built for <b>HackOnVibe</b> (July 2026) · theme: <b>effective promotion of a newly launched mobile app</b></sub></p>
+  <br/>
+
+![Next.js](https://img.shields.io/badge/Next.js_16-black?style=flat&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Claude](https://img.shields.io/badge/AI-Claude_Opus_4.8-8b5cf6?style=flat&logo=anthropic&logoColor=white)
+![ASO Engine](https://img.shields.io/badge/ASO_Engine-28_rules-ff2d95?style=flat)
+![Tests](https://img.shields.io/badge/tests-150_passing-00d4ff?style=flat)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/launchcopilot/actions/workflows/ci.yml)
+
+</div>
 
 ---
 
@@ -35,6 +39,16 @@
 | Paste an App Store / Google Play URL → the real icon, rating, screenshots, and every field fill in. | Deterministic score with per-field bars + exact fixes (light/dark). | A pitch that flows straight into the working grader. |
 
 > ▶ **Try it yourself, no signup, no key:** [launchcopilot.edycu.dev](https://launchcopilot.edycu.dev) — paste **your** app's link and watch it grade.
+
+## ✅ Deterministic, not vibes
+
+**The grader is deterministic — no AI. 28 encoded App Store / Google Play rules, 150 passing tests, sub-millisecond p95.**
+
+Reproduce with `npm run aso-lint` (or `npm test`) — it scores any listing **0–100** with per-field findings and exact fixes, and the *same* engine re-grades the AI's rewrite and forces **≥90 or regenerates**, so the machine is judged by the same deterministic grader as the human.
+
+**Don't trust us — verify it in your browser:** paste **your own** app's App Store / Google Play link on the [live site](https://launchcopilot.edycu.dev) (no signup, no key) and watch it grade, then generate a validated launch kit.
+
+*Honest status: the ASO lint + repair loop is fully deterministic and load-bearing; the generative kit uses Claude (`claude-opus-4-8`) with a Haiku critic pass and runs in `DEMO_MODE=1` with no API key, so judges can reproduce everything locally.*
 
 ## 💡 The Problem & Solution
 
@@ -54,15 +68,20 @@ Solo developers ship good apps and get **six downloads — four of them friends.
 **Next.js 16 + React 19 + Tailwind v4** (one codebase, app + API) · **Claude** (`claude-opus-4-8` writers + `claude-haiku-4-5` persona panel) · **Zod** schema-constrained generation · **Vitest / Playwright / semantic-release** for the harness.
 
 ```mermaid
-flowchart LR
-  A["🔗 Paste store link"] --> B["Extract listing<br/>iTunes API · Play scrape"]
-  B --> C["28-rule ASO lint<br/><i>deterministic · sub-ms · no AI</i>"]
-  C --> D["Score 0–100<br/>+ per-field fixes"]
-  D --> E["Claude Opus<br/>5 parallel writers"]
-  E --> F{"Re-lint the rewrite<br/>score ≥ 90?"}
-  F -- "no · inject findings" --> E
-  F -- "yes" --> G["Claude Haiku<br/>persona-panel QA"]
-  G --> H["🚀 Launch kit<br/>store · PH · social · community · press"]
+flowchart TB
+  subgraph r1[" "]
+    direction LR
+    A["🔗 Paste store link"] --> B["Extract listing<br/>iTunes API · Play scrape"] --> C["28-rule ASO lint<br/><i>deterministic · sub-ms · no AI</i>"] --> D["Score 0–100<br/>+ per-field fixes"]
+  end
+  subgraph r2[" "]
+    direction RL
+    E["Claude Opus<br/>5 parallel writers"] --> F{"Re-lint the rewrite<br/>score ≥ 90?"}
+    F -- "yes" --> G["Claude Haiku<br/>persona-panel QA"] --> H["🚀 Launch kit<br/>store · PH · social · community · press"]
+    F -- "no · inject findings" --> E
+  end
+  D --> E
+  style r1 fill:none,stroke:none
+  style r2 fill:none,stroke:none
 ```
 
 **Where the interesting code lives** (for judges skimming the source):
@@ -130,5 +149,9 @@ npm run release:dry # preview the next semantic version locally
 ## ⚠️ Honest limitations
 
 No auth yet · IP-based rate limits reset on redeploy · rules encode public ASO best practices, not Apple's private ranking algorithm · English-only v1 · paste-a-link extraction is best-effort — the App Store subtitle is anchored to the app's own listing object (never a neighbouring app's), and anything it can't confidently read is flagged, never guessed.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE). © 2026 Edy Cu.
 
 <sub>Thank you for reviewing LaunchCopilot. — Edy</sub>
