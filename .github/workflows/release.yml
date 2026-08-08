@@ -41,7 +41,16 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
+      # semantic-release is deliberately NOT a devDependency. It depends on
+      # @semantic-release/npm, which depends on npm@11 — and npm ships a large
+      # *bundled* node_modules tree containing its own vulnerable copies of
+      # undici and ip-address. Bundled dependencies cannot be reached by npm
+      # `overrides`, and there is no upstream release that fixes them, so any
+      # lockfile that contains semantic-release permanently carries 6 Dependabot
+      # alerts. Installing it on demand here keeps the release pipeline working
+      # while keeping that tree out of package-lock.json entirely.
+      # The invocation lives in the `release` npm script so it stays in one place.
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: npm run release

@@ -19,8 +19,8 @@
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "lighthouse": "lhci autorun",
-    "release": "semantic-release",
-    "release:dry": "semantic-release --dry-run --no-ci"
+    "release": "npx -y -p semantic-release@25 -p @semantic-release/changelog@6 -p @semantic-release/git@10 semantic-release",
+    "release:dry": "npm run release -- --dry-run --no-ci"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
@@ -31,8 +31,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.62.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^26.1.1",
     "@types/react": "^19",
@@ -40,7 +38,6 @@
     "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.3.0",
-    "semantic-release": "^25.0.8",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
     "typescript": "^5.9.3",
