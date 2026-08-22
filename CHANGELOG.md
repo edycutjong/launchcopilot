@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/edycutjong/launchcopilot/compare/v1.0.0...v1.1.0) (2026-08-22)
+
+
+### Bug Fixes
+
+* **deps:** bump next to 16.3.0 to pull sharp >=0.35.0 ([#29](https://github.com/edycutjong/launchcopilot/issues/29)) ([84f51da](https://github.com/edycutjong/launchcopilot/commit/84f51dafbb4948a8fd1441eda993868720d23e14)), closes [hi#severity](https://github.com/hi/issues/severity) [#2](https://github.com/edycutjong/launchcopilot/issues/2)
+* **deps:** install semantic-release on demand to drop bundled npm tree ([#30](https://github.com/edycutjong/launchcopilot/issues/30)) ([a5a9b15](https://github.com/edycutjong/launchcopilot/commit/a5a9b151922760da48ae67918f5cc0ff980095b7))
+
+
+### Features
+
+* example gallery (40 graded + 6 live), hero card, pitch polish, UX fixes ([77442de](https://github.com/edycutjong/launchcopilot/commit/77442ded81a4453927088fbe850df9152dfb48d3)), closes [#grade-panel](https://github.com/edycutjong/launchcopilot/issues/grade-panel)
+* landing footer, wow micro-animations, security/quality hardening ([bc57b3d](https://github.com/edycutjong/launchcopilot/commit/bc57b3d72092f06862cb88dc7e50ed80da6d6018))
+* paste-a-store-link auto-fill, landing page, and pitch deck ([4c0ea3f](https://github.com/edycutjong/launchcopilot/commit/4c0ea3ff8bed71fa4cee82dddd6d9afeed3b37e3))
+* **ui:** add tasteful micro-animations (reduced-motion safe) ([bf2ec8f](https://github.com/edycutjong/launchcopilot/commit/bf2ec8fd5c12bce1e8e6f94b1a03f846332177bc))
+
 # 1.0.0 (2026-08-08)
 
 
